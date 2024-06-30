@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const output = document.getElementById("output");
 
-    document.getElementById('generate').addEventListener('click', (e) => {
+    document.getElementById('generate_patrol_task').addEventListener('click', (e) => {
         e.preventDefault();
 
         // Получение данных из формы
@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const user_surname = document.getElementById("user_surname").value;
 
         // Загрузка заранее определенного файла, лежащего в той же директории
-        fetch('input.docx')
+        fetch('Шаблон задания на патрулирование.docx')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok ' + response.statusText);
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Создание элемента ссылки для скачивания файла
                 const link = document.createElement('a');
                 link.href = URL.createObjectURL(out);
-                link.download = 'output.docx';
+                link.download = 'Задание 111.docx';
                 link.click();
 
                 output.textContent = `Готово!`;
