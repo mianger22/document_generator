@@ -15,8 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const Patrol_route_number = document.getElementById("Patrol_route_number").value;
         const What_date_was_approved = document.getElementById("What_date_was_approved").value;
         const Year_patrol = document.getElementById("Year_patrol").value;
-        const Position_person_issued_task = document.getElementById("Position_person_issued_task").value;
-        const Name_person_issued_task = document.getElementById("Name_person_issued_task").value;
+        const Person_issued_task = document.getElementById("Person_issued_task").value;
         const Position_senior_patroller = document.getElementById("Position_senior_patroller").value;
         const Position_junior_patroller = document.getElementById("Position_junior_patroller").value;
         const Additional_order = document.getElementById("Additional_order").value === true 
@@ -57,8 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     Initials_senior_patroller, Initials_junior_patroller, Name_senior_patroller, 
                     Name_junior_patroller, Additional_order, Time_assignment_issue, Date_assignment_issue, 
                     Task_number, Date_issue_task, Patrol_date, Patrol_route_number, What_date_was_approved, 
-                    Year_patrol, Year_patrol, Position_person_issued_task, Name_person_issued_task, 
-                    Position_senior_patroller, Position_junior_patroller
+                    Year_patrol, Year_patrol, Person_issued_task, Position_senior_patroller, Position_junior_patroller
                 });
 
                 // Генерация и сохранение нового документа
