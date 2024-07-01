@@ -9,8 +9,8 @@ document.addEventListener("DOMContentLoaded", () => {
         Time_assignment_issue = `${Time_assignment_issue.split(":")[0]} часов ${Time_assignment_issue.split(":")[1]} минут`;
         const Date_assignment_issue = document.getElementById("Date_assignment_issue").value.slice(0, -2);
         const Task_number = document.getElementById("Task_number").value;
-        const Date_issue_task = document.getElementById("Date_issue_task").value;
-        const Patrol_date = document.getElementById("Patrol_date").value;
+        const Date_issue_task = document.getElementById("Date_issue_task").value.slice(0, -2);
+        const Patrol_date = document.getElementById("Patrol_date").value.slice(0, -2);
         const Patrol_route_number = document.getElementById("Patrol_route_number").value;
         const What_date_was_approved = document.getElementById("What_date_was_approved").value;
         const Year_patrol = document.getElementById("Year_patrol").value;
@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const Senior_patroller = document.getElementById("Senior_patroller").value;
         const Junior_patroller = document.getElementById("Junior_patroller").value;
         const Additional_order = document.getElementById("Additional_order").value === true 
-            ? "(приказ директора от _____._____._____ года № _____)" : "";
+            ? " (приказ директора от _____._____._____ года № _____)" : "";
 
         // Проверка на заполненность формы
         if (Time_assignment_issue === "" || Date_assignment_issue === "" || Task_number === "" || Date_issue_task === "" ||
