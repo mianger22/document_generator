@@ -4,6 +4,30 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById('generate_patrol_task').addEventListener('click', (e) => {
         e.preventDefault();
 
+        // организация выпадающего списка
+
+        // Массив с опциями
+        // const options = [
+        //     { value: 'value1', text: 'Опция 1' },
+        //     { value: 'value2', text: 'Опция 2' },
+        //     { value: 'value3', text: 'Опция 3' }
+        // ];
+
+        // const dropdown = document.getElementById('myDropdown');
+
+        // Заполняем выпадающий список опциями
+        // options.forEach(option => {
+        //     const opt = document.createElement('option');
+        //     opt.value = option.value;
+        //     opt.textContent = option.text;
+        //     dropdown.appendChild(opt);
+        // });
+
+        // dropdown.addEventListener('change', function() {
+        //     console.log('Вы выбрали: ' + this.value);
+        //     alert('Вы выбрали: ' + this.options[this.selectedIndex].text);
+        // });
+
         // Получение данных из формы
         const Name_senior_patroller = document.getElementById("Name_senior_patroller").value;
         const Name_junior_patroller = document.getElementById("Name_junior_patroller").value;

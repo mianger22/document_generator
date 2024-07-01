@@ -27,6 +27,11 @@
         .submit-button {
             @apply bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline;
         }
+
+        select {
+            padding: 5px;
+            font-size: 16px;
+        }
     </style>
     <script src="index.js"></script>
 </head>
@@ -70,9 +75,14 @@
                     <label class="input-label" for="What_date_was_approved">Какого числа утверждён</label>
                     <input class="input-field" id="What_date_was_approved" type="text" placeholder="08.12.2023 года" value="08.12.2023 года">
                 </div>
-                <div class="mb-4 flex justify-between">
+                <div class="mb-4 flex items-center">
                     <label class="input-label" for="Year_patrol">Год патрулирования</label>
-                    <input class="input-field" id="Year_patrol" type="number" placeholder="2024" value="2024">
+                    <select id="Year_patrol" name="Year_patrol" style="margin-left: 40px;">
+                        <option value="2024">2024</option>
+                        <option value="2025">2025</option>
+                        <option value="2026">2026</option>
+                        <option value="2027">2027</option>
+                    </select>
                 </div>
                 <div class="mb-4">
                     <label class="input-label" for="Who_issued_patrol">Кто выдал задание</label>
