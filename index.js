@@ -6,8 +6,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Получение данных из формы
         let Time_assignment_issue = document.getElementById("Time_assignment_issue").value;
-        Time_assignment_issue = `${Time_assignment_issue.split("-")[0]} часов ${Time_assignment_issue.split("-")[1]} минут`;
-        const Date_assignment_issue = document.getElementById("Date_assignment_issue").value;
+        Time_assignment_issue = `${Time_assignment_issue.split(":")[0]} часов ${Time_assignment_issue.split(":")[1]} минут`;
+        const Date_assignment_issue = document.getElementById("Date_assignment_issue").value.slice(0, -2);
         const Task_number = document.getElementById("Task_number").value;
         const Date_issue_task = document.getElementById("Date_issue_task").value;
         const Patrol_date = document.getElementById("Patrol_date").value;
