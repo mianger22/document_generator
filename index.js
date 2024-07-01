@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
         e.preventDefault();
 
         // Получение данных из формы
-        const Name_junior_patroller = document.getElementById("Name_junior_patroller").value;
         const Time_assignment_issue = document.getElementById("Time_assignment_issue").value;
         const Date_assignment_issue = document.getElementById("Date_assignment_issue").value;
         const Task_number = document.getElementById("Task_number").value;
@@ -16,22 +15,36 @@ document.addEventListener("DOMContentLoaded", () => {
         const Year_patrol = document.getElementById("Year_patrol").value;
         const Person_issued_task = document.getElementById("Person_issued_task").value;
         const Senior_patroller = document.getElementById("Senior_patroller").value;
-        const Position_junior_patroller = document.getElementById("Position_junior_patroller").value;
+        const Junior_patroller = document.getElementById("Junior_patroller").value;
         const Additional_order = document.getElementById("Additional_order").value === true 
             ? "(приказ директора от _____._____._____ года № _____)" : "";
 
         // Создание фамилии с инициалами из полного имени
         let Initials_senior_patroller, Initials_junior_patroller;
 
+        // Создание инициалов старшего патрульной группы
         switch (Senior_patroller) {
             case 'мастер леса Мясноборского участкового лесничества Устинов Дмитрий Сергеевич':
-                Initials_senior_patroller = Initials_junior_patroller = 'мастер леса Мясноборского участкового лесничества Устинов Д.С.';
+                Initials_senior_patroller = 'мастер леса Мясноборского участкового лесничества Устинов Д.С.';
                 break;
             case 'участковый лесничий Ермолинского участкового лесничества Кузнецова Елизавета Михайловна':
-                Initials_senior_patroller = Initials_junior_patroller = 'участковый лесничий Ермолинского участкового лесничества Кузнецова Е.М.';
+                Initials_senior_patroller = 'участковый лесничий Ермолинского участкового лесничества Кузнецова Е.М.';
                 break;
             case 'участковый лесничий Новгородского участкового лесничества Маркова Ирина Фирсовна':
-                Initials_senior_patroller = Initials_junior_patroller = 'участковый лесничий Новгородского участкового лесничества Маркова И.Ф.';
+                Initials_senior_patroller = 'участковый лесничий Новгородского участкового лесничества Маркова И.Ф.';
+                break;
+        }
+
+        // Создание инициалов младшего патрульной группы
+        switch (Junior_patroller) {
+            case 'мастер леса Мясноборского участкового лесничества Устинов Дмитрий Сергеевич':
+                Initials_junior_patroller = 'мастер леса Мясноборского участкового лесничества Устинов Д.С.';
+                break;
+            case 'участковый лесничий Ермолинского участкового лесничества Кузнецова Елизавета Михайловна':
+                Initials_junior_patroller = 'участковый лесничий Ермолинского участкового лесничества Кузнецова Е.М.';
+                break;
+            case 'участковый лесничий Новгородского участкового лесничества Маркова Ирина Фирсовна':
+                Initials_junior_patroller = 'участковый лесничий Новгородского участкового лесничества Маркова И.Ф.';
                 break;
         }
 
@@ -53,9 +66,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Обработка документа (замена {user_name} на имя пользователя, {user_surname} на фамилию пользователя и т.д.)
                 doc.render({
                     Initials_senior_patroller, Initials_junior_patroller, Senior_patroller, 
-                    Name_junior_patroller, Additional_order, Time_assignment_issue, Date_assignment_issue, 
+                    Junior_patroller, Additional_order, Time_assignment_issue, Date_assignment_issue, 
                     Task_number, Date_issue_task, Patrol_date, Patrol_route_number, What_date_was_approved, 
-                    Year_patrol, Year_patrol, Person_issued_task, Position_junior_patroller
+                    Year_patrol, Year_patrol, Person_issued_task
                 });
 
                 // Генерация и сохранение нового документа
