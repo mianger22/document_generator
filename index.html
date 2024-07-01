@@ -39,11 +39,11 @@
                 </div>
                 <div class="mb-4">
                     <label class="input-label" for="Date_issue_task">От какого числа</label>
-                    <input class="input-field" id="Date_issue_task" type="text" placeholder="«10» июня 2024">
+                    <input class="input-field date_selection" id="Date_issue_task" type="text" placeholder="«10» июня 2024">
                 </div>
                 <div class="mb-4">
                     <label class="input-label" for="Patrol_date">Дата патрулирования</label>
-                    <input class="input-field" id="Patrol_date" type="text" placeholder="«15» июня 2024">
+                    <input class="input-field date_selection" id="Patrol_date" type="text" placeholder="«15» июня 2024">
                 </div>
                 <div class="mb-4">
                     <label class="input-label" for="Patrol_route_number">Номер маршрута патрулирования</label>
@@ -100,7 +100,7 @@
                 <div class="mb-4 flex flex-col space-y-1">
                     <label class="input-label" for="Time_and_date_assignment_issue">Время и дата выдачи задания</label>
                     <input class="input-field" id="Time_assignment_issue" type="text" placeholder="12:30">
-                    <input class="input-field" id="Date_assignment_issue" type="text" placeholder="«10» июня 2024">                    
+                    <input class="input-field date_selection" id="Date_assignment_issue" type="text" placeholder="«10» июня 2024">                    
                 </div>
                 <div class="mb-4">
                     <input type="checkbox" id="Additional_order" name="Additional_order"> Дополнительный приказ
@@ -146,17 +146,23 @@
         });
 
         // Инициализация выбора даты
-        const picker = datepicker('#Date_assignment_issue', {
-            formatter: (input, date, instance) => {
-                const options = { day: 'numeric', month: 'long', year: 'numeric' };
-                const formattedDate = date.toLocaleDateString('ru-RU', options);
-                input.value = formattedDate;
-            },
-            customDays: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
-            customMonths: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
-            overlayButton: 'Применить',
-            overlayPlaceholder: 'Выберите год'
-        });
+        let array_selected_dates = document.getElementsByClassName('date_selection');
+
+        for (let index = 0; index < array_selected_dates.length; index++) {
+            const received_date = array_selected_dates[index];
+
+            const picker = datepicker(received_date, {
+                formatter: (input, date, instance) => {
+                    const options = { day: 'numeric', month: 'long', year: 'numeric' };
+                    const formattedDate = date.toLocaleDateString('ru-RU', options);
+                    input.value = formattedDate;
+                },
+                customDays: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
+                customMonths: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
+                overlayButton: 'Применить',
+                overlayPlaceholder: 'Выберите год'
+            });
+        }
     </script>
 </body>
 </html>
