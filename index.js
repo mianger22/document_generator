@@ -5,8 +5,37 @@ document.addEventListener("DOMContentLoaded", () => {
         e.preventDefault();
 
         // Получение данных из формы
-        const user_name = document.getElementById("user_name").value;
-        const user_surname = document.getElementById("user_surname").value;
+        const Name_senior_patroller = document.getElementById("Name_senior_patroller").value;
+        const Name_junior_patroller = document.getElementById("Name_junior_patroller").value;
+        const Time_assignment_issue = document.getElementById("Time_assignment_issue").value;
+        const Date_assignment_issue = document.getElementById("Date_assignment_issue").value;
+        const Task_number = document.getElementById("Task_number").value;
+        const Date_issue_task = document.getElementById("Date_issue_task").value;
+        const Patrol_date = document.getElementById("Patrol_date").value;
+        const Patrol_route_number = document.getElementById("Patrol_route_number").value;
+        const What_date_was_approved = document.getElementById("What_date_was_approved").value;
+        const Year_patrol = document.getElementById("Year_patrol").value;
+        const Position_person_issued_task = document.getElementById("Position_person_issued_task").value;
+        const Name_person_issued_task = document.getElementById("Name_person_issued_task").value;
+        const Position_senior_patroller = document.getElementById("Position_senior_patroller").value;
+        const Position_junior_patroller = document.getElementById("Position_junior_patroller").value;
+        const Additional_order = document.getElementById("Additional_order").value === true 
+            ? "(приказ директора от _____._____._____ года № _____)" : "";
+
+        // Создание фамилии с инициалами из полного имени
+        let Initials_senior_patroller, Initials_junior_patroller;
+
+        switch (Name_senior_patroller) {
+            case 'Устинов Дмитрий Сергеевич':
+                Initials_senior_patroller = Initials_junior_patroller = 'Устинов Д.С.';
+                break;
+            case 'Кузнецова Елизавета Михайловна':
+                Initials_senior_patroller = Initials_junior_patroller = 'Кузнецова Е.М.';
+                break;
+            case 'Маркова Ирина Фирсовна':
+                Initials_senior_patroller = Initials_junior_patroller = 'Маркова И.Ф.';
+                break;
+        }
 
         // Загрузка заранее определенного файла, лежащего в той же директории
         fetch('Шаблон задания на патрулирование.docx')
@@ -25,8 +54,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 // Обработка документа (замена {user_name} на имя пользователя, {user_surname} на фамилию пользователя и т.д.)
                 doc.render({
-                    user_name: user_name,
-                    user_surname: user_surname,
+                    Initials_senior_patroller, Initials_junior_patroller, Name_senior_patroller, 
+                    Name_junior_patroller, Additional_order, Time_assignment_issue, Date_assignment_issue, 
+                    Task_number, Date_issue_task, Patrol_date, Patrol_route_number, What_date_was_approved, 
+                    Year_patrol, Year_patrol, Position_person_issued_task, Name_person_issued_task, 
+                    Position_senior_patroller, Position_junior_patroller
                 });
 
                 // Генерация и сохранение нового документа
