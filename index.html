@@ -30,25 +30,25 @@
 
         <div id="form_creating_patrol_task" class="hidden">
             <form>
-                <div class="mb-4 flex justify-between">
+                <div class="mb-4">
                     <label class="input-label" for="Task_number">Номер задания</label>
                     <input class="input-field" id="Task_number" type="number" placeholder="185">
                 </div>
-                <div class="mb-4 flex justify-between">
+                <div class="mb-4">
                     <label class="input-label" for="Date_issue_task">От какого числа</label>
                     <input class="input-field" id="Date_issue_task" type="text" placeholder="«10» июня 2024">
                 </div>
-                <div class="mb-4 flex justify-between">
+                <div class="mb-4">
                     <label class="input-label" for="Patrol_date">Дата патрулирования</label>
                     <input class="input-field" id="Patrol_date" type="text" placeholder="«15» июня 2024">
                 </div>
-                <div class="mb-4 flex justify-between">
+                <div class="mb-4">
                     <label class="input-label" for="Patrol_route_number">Номер маршрута патрулирования</label>
                     <input class="input-field" id="Patrol_route_number" type="text" placeholder="75,6">
                 </div>
-                <div class="mb-4 flex justify-between">
+                <div class="mb-4">
                     <label class="input-label" for="What_date_was_approved">Какого числа утверждён</label>
-                    <input class="input-field" id="What_date_was_approved" type="text" placeholder="08.12.2023" value="08.12.2023 года">
+                    <input class="input-field" id="What_date_was_approved" type="text" placeholder="08.12.2023" value="08.12.2023">
                 </div>
                 <div class="mb-4 flex flex-col space-y-1">
                     <label class="input-label" for="Year_patrol">Год патрулирования</label>
@@ -94,12 +94,10 @@
                         </option>
                     </select>
                 </div>
-                <div class="mb-4">
+                <div class="mb-4 flex flex-col space-y-1">
                     <label class="input-label" for="Time_and_date_assignment_issue">Время и дата выдачи задания</label>
-                    <div class="flex justify-between">
-                        <input class="input-field" id="Time_assignment_issue" type="text" placeholder="12 часов 30 минут">
-                        <input class="input-field" id="Date_assignment_issue" type="text" placeholder="«10» июня 2024">
-                    </div>
+                    <input class="input-field" id="Time_assignment_issue" type="text" placeholder="12-30">
+                    <input class="input-field" id="Date_assignment_issue" type="text" placeholder="«10» июня 2024">
                 </div>
                 <div class="mb-4">
                     <input type="checkbox" id="Additional_order" name="Additional_order"> Дополнительный приказ
