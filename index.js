@@ -7,10 +7,10 @@ document.addEventListener("DOMContentLoaded", () => {
         // Получение данных из формы
         let Time_assignment_issue = document.getElementById("Time_assignment_issue").value;
         Time_assignment_issue = `${Time_assignment_issue.split(":")[0]} часов ${Time_assignment_issue.split(":")[1]} минут`;
-        const Date_assignment_issue = document.getElementById("Date_assignment_issue").value.slice(0, -2);
+        const Date_assignment_issue = document.getElementById("Date_assignment_issue").value;
         const Task_number = document.getElementById("Task_number").value;
-        const Date_issue_task = document.getElementById("Date_issue_task").value.slice(0, -2);
-        const Patrol_date = document.getElementById("Patrol_date").value.slice(0, -2);
+        const Date_issue_task = document.getElementById("Date_issue_task").value;
+        const Patrol_date = document.getElementById("Patrol_date").value;
         const Patrol_route_number = document.getElementById("Patrol_route_number").value;
         const What_date_was_approved = document.getElementById("What_date_was_approved").value;
         const Year_patrol = document.getElementById("Year_patrol").value;

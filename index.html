@@ -151,16 +151,18 @@
         for (let index = 0; index < array_selected_dates.length; index++) {
             const received_date = array_selected_dates[index];
 
+            const monthNames = [
+                'января', 'февраля', 'марта', 'апреля', 'мая', 'июня',
+                'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'
+            ];
+
             const picker = datepicker(received_date, {
                 formatter: (input, date, instance) => {
-                    const options = { day: 'numeric', month: 'long', year: 'numeric' };
-                    const formattedDate = date.toLocaleDateString('ru-RU', options);
-                    input.value = formattedDate;
+                    const day = `0${date.getDate()}`.slice(-2);
+                    const month = monthNames[date.getMonth()];
+                    const year = date.getFullYear();
+                    input.value = `«${day}» ${month} ${year}`;
                 },
-                customDays: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
-                customMonths: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
-                overlayButton: 'Применить',
-                overlayPlaceholder: 'Выберите год'
             });
         }
     </script>
