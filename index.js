@@ -17,8 +17,6 @@ const custom_alert = (message) => {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    const output = document.getElementById("output");
-
     document.getElementById('generate_patrol_task').addEventListener('click', (e) => {
         e.preventDefault();
 
@@ -117,11 +115,11 @@ document.addEventListener("DOMContentLoaded", () => {
                         link.download = `Задание на проведение патрулирования по МБ л-ву № ${Task_number}.docx`;
                         link.click();
 
-                        output.textContent = `Готово!`;
+                        custom_alert("Конец")
                     })
                     .catch(error => {
                         console.error('Ошибка:', error);
-                        alert('Не удалось загрузить файл!');
+                        alert('Ошибка! Смотри в console');
                     });
             }
         }
