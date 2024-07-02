@@ -129,37 +129,5 @@
             </form>
         </div>
     </div>
-
-    <script>
-        document.getElementById('formSelect').addEventListener('change', function() {
-            document.querySelectorAll('.hidden').forEach(container => {
-                container.style.display = 'none';
-            });
-            
-            const selectedForm = this.value;
-            document.getElementById(selectedForm).style.display = 'block';
-        });
-
-        // Инициализация выбора даты
-        let array_selected_dates = document.getElementsByClassName('date_selection');
-
-        for (let index = 0; index < array_selected_dates.length; index++) {
-            const received_date = array_selected_dates[index];
-
-            const monthNames = [
-                'января', 'февраля', 'марта', 'апреля', 'мая', 'июня',
-                'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'
-            ];
-
-            const picker = datepicker(received_date, {
-                formatter: (input, date, instance) => {
-                    const day = `0${date.getDate()}`.slice(-2);
-                    const month = monthNames[date.getMonth()];
-                    const year = date.getFullYear();
-                    input.value = `«${day}» ${month} ${year}`;
-                },
-            });
-        }
-    </script>
 </body>
 </html>

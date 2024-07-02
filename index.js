@@ -43,6 +43,37 @@ function validate_getted_time(getted_time) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+    // Реализация смены форм
+    document.getElementById('formSelect').addEventListener('change', function() {
+        document.querySelectorAll('.hidden').forEach(container => {
+            container.style.display = 'none';
+        });
+        
+        const selectedForm = this.value;
+        document.getElementById(selectedForm).style.display = 'block';
+    });
+
+    // Инициализация выбора даты
+    let array_selected_dates = document.getElementsByClassName('date_selection');
+
+    for (let index = 0; index < array_selected_dates.length; index++) {
+        const received_date = array_selected_dates[index];
+
+        const monthNames = [
+            'января', 'февраля', 'марта', 'апреля', 'мая', 'июня',
+            'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'
+        ];
+
+        datepicker(received_date, {
+            formatter: (input, date) => {
+                const day = `0${date.getDate()}`.slice(-2);
+                const month = monthNames[date.getMonth()];
+                const year = date.getFullYear();
+                input.value = `«${day}» ${month} ${year}`;
+            },
+        });
+    }
+
     document.getElementById('generate_patrol_task').addEventListener('click', (e) => {
         e.preventDefault();
 
