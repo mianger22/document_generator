@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const Person_issued_task = document.getElementById("Person_issued_task").value;
         const Senior_patroller = document.getElementById("Senior_patroller").value;
         const Junior_patroller = document.getElementById("Junior_patroller").value;
-        const Additional_order = document.getElementById("Additional_order").value === true 
+        const Additional_order = document.getElementById("Additional_order").value === "on" 
             ? " (приказ директора от _____._____._____ года № _____)" : "";
 
         if (Time_assignment_issue === "" || Date_assignment_issue === "" || Task_number === "" || Date_issue_task === "" ||
