@@ -77,79 +77,83 @@ document.addEventListener("DOMContentLoaded", () => {
                     if (validate_getted_time(Time_assignment_issue) === false) {
                         custom_alert("Время выдачи задания должно быть корректным"); 
                     } else {
-                        Time_assignment_issue = `${Time_assignment_issue.split(" ")[0]} часов ${Time_assignment_issue.split(" ")[1]} минут`;
-                        Patrol_route_number = Patrol_route_number.replace(/ /g, ',');
+                        if (Task_number.length > 4) {
+                            custom_alert("Номер задания должен быть не более 4 цифр"); 
+                        } else {
+                            Time_assignment_issue = `${Time_assignment_issue.split(" ")[0]} часов ${Time_assignment_issue.split(" ")[1]} минут`;
+                            Patrol_route_number = Patrol_route_number.replace(/ /g, ',');
 
-                        // Создание фамилии с инициалами из полного имени
-                        let Initials_senior_patroller, Initials_junior_patroller;
+                            // Создание фамилии с инициалами из полного имени
+                            let Initials_senior_patroller, Initials_junior_patroller;
 
-                        // Создание инициалов старшего патрульной группы
-                        switch (Senior_patroller) {
-                            case 'мастер леса Мясноборского участкового лесничества Устинов Дмитрий Сергеевич':
-                                Initials_senior_patroller = 'мастер леса Мясноборского участкового лесничества Устинов Д.С.';
-                                break;
-                            case 'участковый лесничий Ермолинского участкового лесничества Кузнецова Елизавета Михайловна':
-                                Initials_senior_patroller = 'участковый лесничий Ермолинского участкового лесничества Кузнецова Е.М.';
-                                break;
-                            case 'участковый лесничий Новгородского участкового лесничества Маркова Ирина Фирсовна':
-                                Initials_senior_patroller = 'участковый лесничий Новгородского участкового лесничества Маркова И.Ф.';
-                                break;
+                            // Создание инициалов старшего патрульной группы
+                            switch (Senior_patroller) {
+                                case 'мастер леса Мясноборского участкового лесничества Устинов Дмитрий Сергеевич':
+                                    Initials_senior_patroller = 'мастер леса Мясноборского участкового лесничества Устинов Д.С.';
+                                    break;
+                                case 'участковый лесничий Ермолинского участкового лесничества Кузнецова Елизавета Михайловна':
+                                    Initials_senior_patroller = 'участковый лесничий Ермолинского участкового лесничества Кузнецова Е.М.';
+                                    break;
+                                case 'участковый лесничий Новгородского участкового лесничества Маркова Ирина Фирсовна':
+                                    Initials_senior_patroller = 'участковый лесничий Новгородского участкового лесничества Маркова И.Ф.';
+                                    break;
+                            }
+
+                            // Создание инициалов младшего патрульной группы
+                            switch (Junior_patroller) {
+                                case 'мастер леса Мясноборского участкового лесничества Устинов Дмитрий Сергеевич':
+                                    Initials_junior_patroller = 'мастер леса Мясноборского участкового лесничества Устинов Д.С.';
+                                    break;
+                                case 'участковый лесничий Ермолинского участкового лесничества Кузнецова Елизавета Михайловна':
+                                    Initials_junior_patroller = 'участковый лесничий Ермолинского участкового лесничества Кузнецова Е.М.';
+                                    break;
+                                case 'участковый лесничий Новгородского участкового лесничества Маркова Ирина Фирсовна':
+                                    Initials_junior_patroller = 'участковый лесничий Новгородского участкового лесничества Маркова И.Ф.';
+                                    break;
+                            }
+
+                            // Загрузка заранее определенного файла, лежащего в той же директории
+                            fetch('Шаблон задания на патрулирование.docx')
+                                .then(response => {
+                                    if (!response.ok) {
+                                        throw new Error('Network response was not ok ' + response.statusText);
+                                    }
+                                    return response.arrayBuffer();
+                                })
+                                .then(data => {
+                                    const zip = new PizZip(data);
+                                    const doc = new window.docxtemplater(zip, {
+                                        paragraphLoop: true,
+                                        linebreaks: true,
+                                    });
+
+                                    // Обработка документа (замена {user_name} на имя пользователя, {user_surname} на фамилию пользователя и т.д.)
+                                    doc.render({
+                                        Initials_senior_patroller, Initials_junior_patroller, Senior_patroller, 
+                                        Junior_patroller, Additional_order, Time_assignment_issue, Date_assignment_issue, 
+                                        Task_number, Date_issue_task, Patrol_date, Patrol_route_number, What_date_was_approved, 
+                                        Year_patrol, Year_patrol, Person_issued_task
+                                    });
+
+                                    // Генерация и сохранение нового документа
+                                    const out = doc.getZip().generate({
+                                        type: "blob",
+                                        mimeType: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                                    });
+
+                                    // Создание элемента ссылки для скачивания файла
+                                    const link = document.createElement('a');
+                                    link.href = URL.createObjectURL(out);
+                                    link.download = `Задание на проведение патрулирования по МБ л-ву № ${Task_number}.docx`;
+                                    link.click();
+
+                                    custom_alert("Конец")
+                                })
+                                .catch(error => {
+                                    console.error('Ошибка:', error);
+                                    alert('Ошибка! Смотри в console');
+                                });
                         }
-
-                        // Создание инициалов младшего патрульной группы
-                        switch (Junior_patroller) {
-                            case 'мастер леса Мясноборского участкового лесничества Устинов Дмитрий Сергеевич':
-                                Initials_junior_patroller = 'мастер леса Мясноборского участкового лесничества Устинов Д.С.';
-                                break;
-                            case 'участковый лесничий Ермолинского участкового лесничества Кузнецова Елизавета Михайловна':
-                                Initials_junior_patroller = 'участковый лесничий Ермолинского участкового лесничества Кузнецова Е.М.';
-                                break;
-                            case 'участковый лесничий Новгородского участкового лесничества Маркова Ирина Фирсовна':
-                                Initials_junior_patroller = 'участковый лесничий Новгородского участкового лесничества Маркова И.Ф.';
-                                break;
-                        }
-
-                        // Загрузка заранее определенного файла, лежащего в той же директории
-                        fetch('Шаблон задания на патрулирование.docx')
-                            .then(response => {
-                                if (!response.ok) {
-                                    throw new Error('Network response was not ok ' + response.statusText);
-                                }
-                                return response.arrayBuffer();
-                            })
-                            .then(data => {
-                                const zip = new PizZip(data);
-                                const doc = new window.docxtemplater(zip, {
-                                    paragraphLoop: true,
-                                    linebreaks: true,
-                                });
-
-                                // Обработка документа (замена {user_name} на имя пользователя, {user_surname} на фамилию пользователя и т.д.)
-                                doc.render({
-                                    Initials_senior_patroller, Initials_junior_patroller, Senior_patroller, 
-                                    Junior_patroller, Additional_order, Time_assignment_issue, Date_assignment_issue, 
-                                    Task_number, Date_issue_task, Patrol_date, Patrol_route_number, What_date_was_approved, 
-                                    Year_patrol, Year_patrol, Person_issued_task
-                                });
-
-                                // Генерация и сохранение нового документа
-                                const out = doc.getZip().generate({
-                                    type: "blob",
-                                    mimeType: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-                                });
-
-                                // Создание элемента ссылки для скачивания файла
-                                const link = document.createElement('a');
-                                link.href = URL.createObjectURL(out);
-                                link.download = `Задание на проведение патрулирования по МБ л-ву № ${Task_number}.docx`;
-                                link.click();
-
-                                custom_alert("Конец")
-                            })
-                            .catch(error => {
-                                console.error('Ошибка:', error);
-                                alert('Ошибка! Смотри в console');
-                            });
                     }
                 }
             }
