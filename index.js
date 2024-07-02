@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const Task_number = document.getElementById("Task_number").value;
         const Date_issue_task = document.getElementById("Date_issue_task").value;
         const Patrol_date = document.getElementById("Patrol_date").value;
-        const Patrol_route_number = document.getElementById("Patrol_route_number").value;
+        let Patrol_route_number = document.getElementById("Patrol_route_number").value;
         const What_date_was_approved = document.getElementById("What_date_was_approved").value;
         const Year_patrol = document.getElementById("Year_patrol").value;
         const Person_issued_task = document.getElementById("Person_issued_task").value;
@@ -53,7 +53,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     custom_alert("Время выдачи задания должно быть вида 12 30");
                 } else  {
                     Time_assignment_issue = `${Time_assignment_issue.split(" ")[0]} часов ${Time_assignment_issue.split(" ")[1]} минут`;
-                
+                    Patrol_route_number = Patrol_route_number.replace(/ /g, ',');
+
                     // Создание фамилии с инициалами из полного имени
                     let Initials_senior_patroller, Initials_junior_patroller;
 
