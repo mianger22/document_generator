@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     // Создание элемента ссылки для скачивания файла
                     const link = document.createElement('a');
                     link.href = URL.createObjectURL(out);
-                    link.download = 'Задание 111.docx';
+                    link.download = `Задание на проведение патрулирования по МБ л-ву № ${Task_number}.docx`;
                     link.click();
 
                     output.textContent = `Готово!`;
