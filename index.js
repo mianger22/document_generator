@@ -74,6 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // Генерация задания на проведение патрулирования
     document.getElementById('generate_patrol_task').addEventListener('click', (e) => {
         e.preventDefault();
 
@@ -189,5 +190,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             }
         }
+    });
+
+    // Генерация акта о проведённом патрулировании
+    document.getElementById('generate_patrol_report').addEventListener('click', (e) => {
+        alert("hh");
     });
 });
