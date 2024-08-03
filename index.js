@@ -194,6 +194,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Генерация акта о проведённом патрулировании
     document.getElementById('generate_patrol_report').addEventListener('click', (e) => {
-        alert("hh");
+        e.preventDefault();
+
+        const Number_patrol_act = document.getElementById("Number_patrol_act").value;
+        const Date_patrol_act = document.getElementById("Date_patrol_act").value;
+        const Patrol_task_number__act = document.getElementById("Patrol_task_number__act").value;
+        const Date_patrol_task__act = document.getElementById("Date_patrol_task__act").value;
+        const Senior_patroller__act = document.getElementById("Senior_patroller__act").value;
+        const Junior_patroller__act = document.getElementById("Junior_patroller__act").value;
+        const Patrol_route_number__act = document.getElementById("Patrol_route_number__act").value;
+        const Patrol_report__act = document.getElementById("Patrol_report__act").value;
+        const Is_there_photo_table = document.querySelector("#Is_there_photo_table").checked === true
+        ? " (приказ директора от _____._____._____ года № _____)" : "";
     });
 });
