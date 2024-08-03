@@ -21,7 +21,7 @@
             <select id="formSelect" class="block appearance-none w-full bg-white border border-purple-500 hover:border-purple-600 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
                 <option value="" selected disabled>Выберите документ</option>
                 <option value="form_creating_patrol_task">Задание на проведение патрулирования</option>
-                <option value="form2">Form 2</option>
+                <option value="form_act_conducting_patrol">Акт о проведении патрулирования</option>
                 <option value="form3">Form 3</option>
             </select>
         </div>
@@ -105,18 +105,66 @@
             </form>
         </div>
 
-        <div id="form2" class="hidden">
+        <div id="form_act_conducting_patrol" class="hidden">
             <form>
                 <div class="mb-4">
-                    <label class="block text-purple-700 text-sm font-bold mb-2" for="username2">Username</label>
-                    <input class="shadow border rounded w-full py-2 px-3 text-purple-700 leading-tight focus:outline-none focus:shadow-outline" id="username2" type="text" placeholder="Enter your username">
+                    <label class="block text-purple-700 text-sm font-bold mb-2" for="Number_patrol_act">Номер акта о патрулировании</label>
+                    <input class="shadow border rounded w-full py-2 px-3 text-purple-700 leading-tight focus:outline-none focus:shadow-outline" id="Number_patrol_act" type="number" placeholder="105">
                 </div>
                 <div class="mb-4">
-                    <label class="block text-purple-700 text-sm font-bold mb-2" for="password2">Password</label>
-                    <input class="shadow border rounded w-full py-2 px-3 text-purple-700 leading-tight focus:outline-none focus:shadow-outline" id="password2" type="password" placeholder="Enter your password">
+                    <label class="block text-purple-700 text-sm font-bold mb-2" for="Date_patrol_act">Дата акта о патрулировании</label>
+                    <input class="shadow border rounded w-full py-2 px-3 text-purple-700 leading-tight focus:outline-none focus:shadow-outline" id="Date_patrol_act" type="text" placeholder="03 июня 2024 года">
                 </div>
-                <button class="bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Submit</button>
-            </form>
+                <div class="mb-4">
+                    <label class="block text-purple-700 text-sm font-bold mb-2" for="Patrol_task_number__act">Номер задания на проведение патрулирования</label>
+                    <input class="shadow border rounded w-full py-2 px-3 text-purple-700 leading-tight focus:outline-none focus:shadow-outline" id="Patrol_task_number__act" type="number" placeholder="157">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-purple-700 text-sm font-bold mb-2" for="Date_patrol_task__act">Дата выдачи задания на проведение патрулирования</label>
+                    <input class="shadow border rounded w-full py-2 px-3 text-purple-700 leading-tight focus:outline-none focus:shadow-outline" id="Date_patrol_task__act" type="text" placeholder="12.04.2024">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-purple-700 text-sm font-bold mb-2" for="Who_is_patrolling__act">Старший патрулирования</label>
+                    <select id="Senior_patroller__act" name="Senior_patroller__act">
+                        <option value='мастер леса Мясноборского участкового лесничества Устинов Дмитрий Сергеевич'>
+                            Устинов, мастер Мясноборского
+                        </option>
+                        <option value='участковый лесничий Ермолинского участкового лесничества Кузнецова Елизавета Михайловна'>
+                            Кузнецова, участковый Ермолинского
+                        </option>
+                        <option value='участковый лесничий Новгородского участкового лесничества Маркова Ирина Фирсовна'>
+                            Маркова, участковый Новгородского
+                        </option>
+                    </select>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-purple-700 text-sm font-bold mb-2" for="Who_am_I_patrolling_with__act">С кем патрулирую</label>
+                    <select id="Junior_patroller__act" name="Junior_patroller__act">
+                        <option value='мастер леса Мясноборского участкового лесничества Устинов Дмитрий Сергеевич'>
+                            Устинов, мастер Мясноборского
+                        </option>
+                        <option value='участковый лесничий Ермолинского участкового лесничества Кузнецова Елизавета Михайловна' selected>
+                            Кузнецова, участковый Ермолинского
+                        </option>
+                        <option value='участковый лесничий Новгородского участкового лесничества Маркова Ирина Фирсовна'>
+                            Маркова, участковый Новгородского
+                        </option>
+                    </select>    
+                </div>
+                <div class="mb-4">
+                    <label class="block text-purple-700 text-sm font-bold mb-2" for="Patrol_route_number__act">Номер маршрута патрулирования</label>
+                    <input class="shadow border rounded w-full py-2 px-3 text-purple-700 leading-tight focus:outline-none focus:shadow-outline" id="Patrol_route_number__act" type="number" placeholder="70">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-purple-700 text-sm font-bold mb-2" for="Patrol_report__act">Отчёт о патрулировании</label>
+                    <textarea class="shadow border rounded w-full py-2 px-3 text-purple-700 leading-tight focus:outline-none focus:shadow-outline" id="Patrol_report__act" placeholder="Во время патрулирования не было обнаружено нарушений лесного законодательства, лесозаготовительной техники и граждан, незаконно вывозящих древесину из лесного фонда. Мы использовали автомобиль УАЗ С522ХС53 для патрулирования, маршрут которого составил 20 километров. Кроме того, мы проинформировали двух граждан в деревне Вешки о запрете посещения лесного массива и административном наказании за его нарушение.">
+                </div>
+                <div class="mb-4">
+                    <input type="checkbox" id="Is_there_photo_table" name="Is_there_photo_table">Нестандартное приложение
+                </div>
+
+                <button class="bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Сгенерировать</button>
+            </form>            
         </div>
 
         <div id="form3" class="hidden">
