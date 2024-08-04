@@ -183,10 +183,12 @@
                         </option>
                     </select> 
                 </div>
-                <div class="mb-4">
+                <div class="mb-4 border border-gray-300 rounded p-4 relative">
                     <label class="block text-purple-700 text-sm font-bold mb-2" for="Patrol_report__act">Отчёт о патрулировании</label>
-                    <textarea class="shadow border rounded w-full py-2 px-3 text-purple-700 leading-tight focus:outline-none focus:shadow-outline" rows="5" cols="33" id="Patrol_report__act" placeholder="Во время патрулирования не было обнаружено нарушений лесного законодательства, лесозаготовительной техники и граждан, незаконно вывозящих древесину из лесного фонда. Мы использовали автомобиль УАЗ С522ХС53 для патрулирования, маршрут которого составил 20 километров. Кроме того, мы проинформировали двух граждан в деревне Вешки о запрете посещения лесного массива и административном наказании за его нарушение."></textarea>
-                    <!-- <textarea id="story" name="story" rows="5" cols="33">Frontend-разработчик со стажем</textarea> -->
+                    <textarea class="shadow border rounded w-full py-2 px-3 text-purple-700 leading-tight focus:outline-none focus:shadow-outline" rows="15" cols="33" id="Patrol_report__act">Во время патрулирования не было обнаружено нарушений лесного законодательства, лесозаготовительной техники и граждан, незаконно вывозящих древесину из лесного фонда. Кроме того, мы проинформировали двух граждан в деревне Вешки о запрете посещения лесного массива и административном наказании за его нарушение. Для проведения патрулирования мы использовали автомобиль УАЗ С522ХС53, маршрут которого составил 20 километров.</textarea>
+                    <button type="button" onclick="document.getElementById('Patrol_report__act').value='';" class="absolute top-2 right-2 bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-1 rounded text-xs">
+                        Очистить
+                    </button>
                 </div>
                 <div class="mb-4">
                     <input type="checkbox" id="Is_there_photo_table" name="Is_there_photo_table"> Есть ли фототаблица
