@@ -213,6 +213,35 @@ document.addEventListener("DOMContentLoaded", () => {
             custom_alert("Необходимо заполнить все поля!");
         } else {
             custom_alert("Отлично!")
+
+            // Создание фамилии с инициалами из полного имени
+            let Initials_senior_patroller__act, Initials_junior_patroller__act;
+
+            // Создание инициалов старшего патрульной группы
+            switch (Senior_patroller__act) {
+                case 'мастером леса Мясноборского участкового лесничества Устиновым Дмитрием Сергеевичем':
+                    Initials_senior_patroller__act = 'Устинов Д.С.';
+                    break;
+                case 'участковым лесничим Ермолинского участкового лесничества Кузнецовой Елизаветой Михайловной':
+                    Initials_senior_patroller__act = 'Кузнецова Е.М.';
+                    break;
+                case 'участковым лесничим Новгородского участкового лесничества Марковой Ириной Фирсовной':
+                    Initials_senior_patroller__act = 'Маркова И.Ф.';
+                    break;
+            }
+
+            // Создание инициалов младшего патрульной группы
+            switch (Junior_patroller__act) {
+                case 'мастером леса Мясноборского участкового лесничества Устиновым Дмитрием Сергеевичем':
+                    Initials_junior_patroller__act = 'Устинов Д.С.';
+                    break;
+                case 'участковым лесничим Ермолинского участкового лесничества Кузнецовой Елизаветой Михайловной':
+                    Initials_junior_patroller__act = 'Кузнецова Е.М.';
+                    break;
+                case 'участковым лесничим Новгородского участкового лесничества Марковой Ириной Фирсовной':
+                    Initials_junior_patroller__act = 'Маркова И.Ф.';
+                    break;
+            }
         };
     });
 });
