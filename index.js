@@ -205,7 +205,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let Patrol_route_number__act = document.getElementById("Patrol_route_number__act").value;
         const Patrol_report__act = document.getElementById("Patrol_report__act").value;
         const Is_there_photo_table = document.querySelector("#Is_there_photo_table").checked === true
-        ? " (приказ директора от _____._____._____ года № _____)" : "";
+        ? ", фототаблица" : "";
 
         if (Number_patrol_act === "" || Date_patrol_act === "" || Patrol_task_number__act === "" || Date_patrol_task__act === "" ||
             Senior_patroller__act === "" || Junior_patroller__act === "" || Patrol_route_number__act === "" || Patrol_report__act === "") 
