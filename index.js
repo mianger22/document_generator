@@ -212,8 +212,6 @@ document.addEventListener("DOMContentLoaded", () => {
         {
             custom_alert("Необходимо заполнить все поля!");
         } else {
-            custom_alert("Отлично!")
-
             // Создание фамилии с инициалами из полного имени
             let Initials_senior_patroller__act, Initials_junior_patroller__act;
 
@@ -242,6 +240,47 @@ document.addEventListener("DOMContentLoaded", () => {
                     Initials_junior_patroller__act = 'Маркова И.Ф.';
                     break;
             }
+
+            // Загрузка заранее определенного файла, лежащего в той же директории
+            fetch('Акт задания на проведение патрулирования.docx')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok ' + response.statusText);
+                    }
+                    return response.arrayBuffer();
+                })
+                .then(data => {
+                    const zip = new PizZip(data);
+                    const doc = new window.docxtemplater(zip, {
+                        paragraphLoop: true,
+                        linebreaks: true,
+                    });
+
+                    // Обработка документа (замена {user_name} на имя пользователя, {user_surname} на фамилию пользователя и т.д.)
+                    doc.render({
+                        Initials_senior_patroller__act, Initials_junior_patroller__act, Senior_patroller__act, Junior_patroller__act, 
+                        Number_patrol_act, Date_patrol_act, Patrol_task_number__act, Date_patrol_task__act, Patrol_route_number__act, 
+                        Patrol_report__act, Is_there_photo_table
+                    });
+
+                    // Генерация и сохранение нового документа
+                    const out = doc.getZip().generate({
+                        type: "blob",
+                        mimeType: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                    });
+
+                    // Создание элемента ссылки для скачивания файла
+                    const link = document.createElement('a');
+                    link.href = URL.createObjectURL(out);
+                    link.download = `Акт о проведённом патрулировании по МБ л-ву № ${Number_patrol_act}.docx`;
+                    link.click();
+
+                    custom_alert("Готово!")
+                })
+                .catch(error => {
+                    console.error('Ошибка:', error);
+                    alert('Ошибка! Смотри в console');
+                });
         };
     });
 });
