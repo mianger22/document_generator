@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (Time_assignment_issue === "" || Date_assignment_issue === "" || Patrol_task_number === "" || Date_issue_task === "" ||
             Patrol_date === "" || Patrol_route_number === "" || What_date_was_approved === "" || Year_patrol === "" ||
             Person_issued_task === "" || Full_name_senior_patroller === "" || Full_name_junior_patroller === "" || Number_patrol_act === "" || 
-            Date_patrol_act === "" || Patrol_route_number === "" || Patrol_report === "") 
+            Date_patrol_act === "" || Patrol_report === "") 
         {
             custom_alert("Необходимо заполнить все поля!");
         } else {
@@ -114,7 +114,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 Time_assignment_issue = `${Time_assignment_issue.split(" ")[0]} часов ${Time_assignment_issue.split(" ")[1]} минут`;
 
                 // Создание фамилии с инициалами из полного имени
-                let Senior_patroller, Declension_name_senior_patroller, Initials_senior_patroller, Junior_patroller, Declension_name_junior_patroller, Initials_junior_patroller;
+                let Senior_patroller, Declension_name_senior_patroller, Initials_senior_patroller, 
+                Junior_patroller, Declension_name_junior_patroller, Initials_junior_patroller,
+                Patrol_route_declaration;
 
                 // Создание инициалов старшего патрульной группы
                 switch (Full_name_senior_patroller) {
@@ -157,31 +159,31 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Создание описания маршрута патрулирования
                 switch (Patrol_route_number) {
                     case '70,1':
-                        Patrol_route_number = 'квартал 128 (выдела 14,17,26,30,36,38), квартал 126 (выдела 8,7,15), квартал 228 (выдела 13,21,25), квартал 216 (выдела 17,18,19,23,30), квартал 213 (выдела 20,24,16), квартал 211 (выдела 20,21,24,30,32), квартал 199 (выдела 21,22,31,33,35), квартал 12 (выдела 7,10), квартал 13 (выдела 1,23,40,35)';
+                        Patrol_route_declaration = 'квартал 128 (выдела 14,17,26,30,36,38), квартал 126 (выдела 8,7,15), квартал 228 (выдела 13,21,25), квартал 216 (выдела 17,18,19,23,30), квартал 213 (выдела 20,24,16), квартал 211 (выдела 20,21,24,30,32), квартал 199 (выдела 21,22,31,33,35), квартал 12 (выдела 7,10), квартал 13 (выдела 1,23,40,35)';
                         break;
                     case '71,2':
-                        Patrol_route_number = 'квартал 200 (выдела 49,50,51,4,6,7), квартал 191 (выдела 25,26,27), квартал 40 (выдела 19,20), квартал 201 (выдела 6,8,14,15,18,24,26,28,31), квартал 195 (выдела 11,12), квартал 196 (выдела 2,10,11,12)';
+                        Patrol_route_declaration = 'квартал 200 (выдела 49,50,51,4,6,7), квартал 191 (выдела 25,26,27), квартал 40 (выдела 19,20), квартал 201 (выдела 6,8,14,15,18,24,26,28,31), квартал 195 (выдела 11,12), квартал 196 (выдела 2,10,11,12)';
                         break;
                     case '72,3':
-                        Patrol_route_number = 'квартал 45 (выдела 7,9), квартал 30 (выдела 12,15,17,19), квартал 192 (выдела 3,13), квартал 82 (выдела 5,6,14,20,25), квартал 100 (выдела 14,19,21), квартал 105 (выдела 3,10,14,17,18), квартал 110 (выдела 9,8,17)';
+                        Patrol_route_declaration = 'квартал 45 (выдела 7,9), квартал 30 (выдела 12,15,17,19), квартал 192 (выдела 3,13), квартал 82 (выдела 5,6,14,20,25), квартал 100 (выдела 14,19,21), квартал 105 (выдела 3,10,14,17,18), квартал 110 (выдела 9,8,17)';
                         break;
                     case '73,4':
-                        Patrol_route_number = 'квартал 229 (выдела 2,4,8,9,10,12,13,6,7,11), квартал 116 (выдела 9,13,15,7,18,5,11,12,16), квартал 117 (выдела 18,15,12,16,17,18,21), квартал 119 (выдела 7,16,3,2,17,6,13,14,15)';
+                        Patrol_route_declaration = 'квартал 229 (выдела 2,4,8,9,10,12,13,6,7,11), квартал 116 (выдела 9,13,15,7,18,5,11,12,16), квартал 117 (выдела 18,15,12,16,17,18,21), квартал 119 (выдела 7,16,3,2,17,6,13,14,15)';
                         break;
                     case '74,5':
-                        Patrol_route_number = 'квартал 240 (выдела 1,2,3,4,5,6,13,11,37,38,41,27,29), квартал 250 (выдела 2,3,5), квартал 257 (выдела 1,47,57), квартал 251 (выдела 1,3), квартал 252 (выдела 23,22,24,18,19)';
+                        Patrol_route_declaration = 'квартал 240 (выдела 1,2,3,4,5,6,13,11,37,38,41,27,29), квартал 250 (выдела 2,3,5), квартал 257 (выдела 1,47,57), квартал 251 (выдела 1,3), квартал 252 (выдела 23,22,24,18,19)';
                         break;
                     case '75,6':
-                        Patrol_route_number = 'НЕТ ИНФОРМАЦИИ';
+                        Patrol_route_declaration = 'НЕТ ИНФОРМАЦИИ';
                         break;
                     case '76,7':
-                        Patrol_route_number = 'НЕТ ИНФОРМАЦИИ';
+                        Patrol_route_declaration = 'НЕТ ИНФОРМАЦИИ';
                         break;
                     case '77,8':
-                        Patrol_route_number = 'НЕТ ИНФОРМАЦИИ';
+                        Patrol_route_declaration = 'НЕТ ИНФОРМАЦИИ';
                         break;
                     case '78,9':
-                        Patrol_route_number = 'НЕТ ИНФОРМАЦИИ';
+                        Patrol_route_declaration = 'НЕТ ИНФОРМАЦИИ';
                         break;
                 }
 
@@ -202,7 +204,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                         // Обработка документа (замена {user_name} на имя пользователя, {user_surname} на фамилию пользователя и т.д.)
                         doc.render({
-                            Initials_senior_patroller, Initials_junior_patroller, Senior_patroller, 
+                            Full_name_senior_patroller, Senior_patroller, Full_name_junior_patroller, 
                             Junior_patroller, Additional_order, Time_assignment_issue, Date_assignment_issue, 
                             Patrol_task_number, Date_issue_task, Patrol_date, Patrol_route_number, What_date_was_approved, 
                             Year_patrol, Year_patrol, Person_issued_task
@@ -246,7 +248,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         doc.render({
                             Declension_name_senior_patroller, Initials_senior_patroller, Declension_name_junior_patroller, 
                             Initials_junior_patroller, Number_patrol_act, Date_patrol_act, Patrol_task_number, Date_issue_task, 
-                            Patrol_route_number, Patrol_report, Is_there_photo_table
+                            Patrol_route_declaration, Patrol_report, Is_there_photo_table
                         });
 
                         // Генерация и сохранение нового документа
