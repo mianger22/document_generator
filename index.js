@@ -5,14 +5,8 @@ const custom_alert = (message) => {
         width: 400,
         height: 200,
         padding: "1em",
-        color: "#716add",
+        color: "red",
         background: "#fff url(/pictures/trees_phone.png)",
-        backdrop: `
-            rgba(0,0,123,0.4)
-            url("/pictures/nyan-cat.gif")
-            left top
-            no-repeat
-        `
     });
 }
 
