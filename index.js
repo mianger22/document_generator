@@ -92,14 +92,13 @@ document.addEventListener("DOMContentLoaded", () => {
             ? " (приказ директора от _____._____._____ года № _____)" : "";
         const Number_patrol_act = document.getElementById("Number_patrol_act").value;
         const Date_patrol_act = document.getElementById("Date_patrol_act").value;
-        let Patrol_route_number = document.getElementById("Patrol_route_number").value;
-        const Patrol_report__act = document.getElementById("Patrol_report__act").value;
+        const Patrol_report = document.getElementById("Patrol_report").value;
         const Is_there_photo_table = document.querySelector("#Is_there_photo_table").checked === true ? ", фототаблица" : "";
 
         if (Time_assignment_issue === "" || Date_assignment_issue === "" || Patrol_task_number === "" || Date_issue_task === "" ||
             Patrol_date === "" || Patrol_route_number === "" || What_date_was_approved === "" || Year_patrol === "" ||
             Person_issued_task === "" || Full_name_senior_patroller === "" || Full_name_junior_patroller === "" || Number_patrol_act === "" || 
-            Date_patrol_act === "" || Patrol_route_number === "" || Patrol_report__act === "") 
+            Date_patrol_act === "" || Patrol_route_number === "" || Patrol_report === "") 
         {
             custom_alert("Необходимо заполнить все поля!");
         } else {
@@ -221,7 +220,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         link.download = `Задание на проведение патрулирования по МБ л-ву № ${Patrol_task_number}.docx`;
                         link.click();
 
-                        custom_alert("Конец")
+                        custom_alert("Готово!")
                     })
                     .catch(error => {
                         console.error('Ошибка:', error);
@@ -246,8 +245,8 @@ document.addEventListener("DOMContentLoaded", () => {
                         // Обработка документа (замена {user_name} на имя пользователя, {user_surname} на фамилию пользователя и т.д.)
                         doc.render({
                             Declension_name_senior_patroller, Initials_senior_patroller, Declension_name_junior_patroller, 
-                            Initials_junior, Number_patrol_act, Date_patrol_act, Patrol_task_number, Date_patrol_task__act, 
-                            Patrol_route_number, Patrol_report__act, Is_there_photo_table
+                            Initials_junior_patroller, Number_patrol_act, Date_patrol_act, Patrol_task_number, Date_issue_task, 
+                            Patrol_route_number, Patrol_report, Is_there_photo_table
                         });
 
                         // Генерация и сохранение нового документа
