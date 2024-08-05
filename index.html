@@ -26,6 +26,7 @@
 
         <div id="form_creating_report_conducted_patrol" class="hidden">
             <form>
+                <div class="form-title text-indigo-600 text-sm mt-4 mb-4"><ins>Задание</ins></div>
                 <div class="mb-4">
                     <label class="input-label" for="Patrol_task_number">Номер задания</label>
                     <input class="input-field" id="Patrol_task_number" type="number" placeholder="185">
@@ -129,9 +130,7 @@
                 <div class="mb-4">
                     <input type="checkbox" id="Additional_order" name="Additional_order"> Дополнительный приказ
                 </div>
-
-                <hr>
-
+                <div class="form-title text-indigo-600 text-sm mt-4 mb-4"><ins>Акт</ins></div>
                 <div class="mb-4">
                     <label class="block text-purple-700 text-sm font-bold mb-2" for="Number_patrol_act">Номер акта о патрулировании</label>
                     <input class="shadow border rounded w-full py-2 px-3 text-purple-700 leading-tight focus:outline-none focus:shadow-outline" id="Number_patrol_act" type="number" placeholder="105">
@@ -152,17 +151,6 @@
                 </div>
                 
                 <button class="bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" id="create_report_conducted_patrol">Создать акты</button>
-            </form>
-        </div>
-
-        <div id="form3" class="hidden">
-            <form>
-                <div class="mb-4">
-                    <label class="block text-purple-700 text-sm font-bold mb-2" for="feedback3">Feedback</label>
-                    <textarea class="shadow border rounded w-full py-2 px-3 text-purple-700 leading-tight focus:outline-none focus:shadow-outline" id="feedback3" placeholder="Enter your feedback"></textarea>
-                </div>
-
-                <button class="bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" id="generate_patrol_pattern">Сгенерировать</button>
             </form>
         </div>
     </div>
