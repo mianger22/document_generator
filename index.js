@@ -17,7 +17,6 @@ const custom_alert = (message) => {
 }
 
 // Функции проверки введённого значения на соответствие нужному формату
-const check_format_Patrol_route_number = (value) => /^\d{2} \d$/.test(value);
 const check_format_Time_assignment_issue = (value) => /^\d{2} \d{2}$/.test(value);
 
 // Проверка на корректность введённого времени
@@ -107,8 +106,6 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             if (Number_patrol_act.length > 4) {
                 custom_alert(`Номер акта должен быть не более 4 цифр`);
-            } else if (check_format_Patrol_route_number(Patrol_route_number) === false) {
-                custom_alert(`Номер маршрута должен быть вида 75 6`);
             } else if (check_format_Time_assignment_issue(Time_assignment_issue) === false) {
                 custom_alert("Время выдачи задания должно быть вида 12 30");
             } else if (validate_getted_time(Time_assignment_issue) === false) {
@@ -117,7 +114,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 custom_alert("Номер задания должен быть не более 4 цифр"); 
             } else {
                 Time_assignment_issue = `${Time_assignment_issue.split(" ")[0]} часов ${Time_assignment_issue.split(" ")[1]} минут`;
-                Patrol_route_number = Patrol_route_number.replace(/ /g, ',');
 
                 // Создание фамилии с инициалами из полного имени
                 let Senior_patroller, Declension_name_senior_patroller, Initials_senior_patroller, Junior_patroller, Declension_name_junior_patroller, Initials_junior_patroller;
@@ -254,9 +250,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
                         // Обработка документа (замена {user_name} на имя пользователя, {user_surname} на фамилию пользователя и т.д.)
                         doc.render({
-                            Initials_senior_patroller__act, Initials_junior_patroller__act, Senior_patroller__act, Junior_patroller__act, 
-                            Number_patrol_act, Date_patrol_act, Patrol_task_number, Date_patrol_task__act, Patrol_route_number__act, 
-                            Patrol_report__act, Is_there_photo_table
+                            Declension_name_senior_patroller, Initials_senior_patroller, Declension_name_junior_patroller, 
+                            Initials_junior, Number_patrol_act, Date_patrol_act, Patrol_task_number, Date_patrol_task__act, 
+                            Patrol_route_number__act, Patrol_report__act, Is_there_photo_table
                         });
 
                         // Генерация и сохранение нового документа
