@@ -19,14 +19,13 @@
         
         <div class="mb-4">
             <select id="formSelect" class="block appearance-none w-full bg-white border border-purple-500 hover:border-purple-600 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-                <option value="" selected disabled>Выберите документ</option>
-                <option value="form_creating_patrol_task">Задание на проведение патрулирования</option>
-                <option value="form_act_conducting_patrol">Акт о проведении патрулирования</option>
+                <option selected disabled>Выберите документ</option>
+                <option value="form_creating_report_conducted_patrol">Отчёт по патрулированию</option>
                 <option value="form3">Form 3</option>
             </select>
         </div>
 
-        <div id="form_creating_patrol_task" class="hidden">
+        <div id="form_creating_report_conducted_patrol" class="hidden">
             <form>
                 <div class="mb-4">
                     <label class="input-label" for="Patrol_task_number">Номер задания</label>
@@ -153,53 +152,8 @@
                     <input type="checkbox" id="Is_there_photo_table" name="Is_there_photo_table"> Есть ли фототаблица
                 </div>
                 
-                <button class="bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" id="generate_patrol_task">Сгенерировать</button>
+                <button class="bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" id="create_report_conducted_patrol">Сгенерировать</button>
             </form>
-        </div>
-
-        <div id="form_act_conducting_patrol" class="hidden">
-            <form>
-                <!-- <div class="mb-4">
-                    <label class="block text-purple-700 text-sm font-bold mb-2" for="Patrol_task_number__act">Номер задания на проведение патрулирования</label>
-                    <input class="shadow border rounded w-full py-2 px-3 text-purple-700 leading-tight focus:outline-none focus:shadow-outline" id="Patrol_task_number__act" type="number" placeholder="157">
-                </div> -->
-                <!-- <div class="mb-4">
-                    <label class="block text-purple-700 text-sm font-bold mb-2" for="Date_patrol_task__act">Дата выдачи задания на проведение патрулирования</label>
-                    <input class="input-field date_selection" id="Date_patrol_task__act" type="text" placeholder="«12» апреля 2024">
-                </div> -->
-                <!-- <div class="mb-4">
-                    <label class="block text-purple-700 text-sm font-bold mb-2" for="Who_is_patrolling__act">Старший патрулирования</label>
-                    <select id="Senior_patroller__act" name="Senior_patroller__act">
-                        <option value='мастером леса Мясноборского участкового лесничества Устиновым Дмитрием Сергеевичем'>
-                            Устинов, мастер Мясноборского
-                        </option>
-                        <option value='участковым лесничим Ермолинского участкового лесничества Кузнецовой Елизаветой Михайловной'>
-                            Кузнецова, участковый Ермолинского
-                        </option>
-                        <option value='участковым лесничим Новгородского участкового лесничества Марковой Ириной Фирсовной'>
-                            Маркова, участковый Новгородского
-                        </option>
-                    </select>
-                </div> -->
-                <!-- <div class="mb-4">
-                    <label class="block text-purple-700 text-sm font-bold mb-2" for="Who_am_I_patrolling_with__act">С кем патрулирую</label>
-                    <select id="Junior_patroller__act" name="Junior_patroller__act">
-                        <option value='мастером леса Мясноборского участкового лесничества Устиновым Дмитрием Сергеевичем'>
-                            Устинов, мастер Мясноборского
-                        </option>
-                        <option value='участковым лесничим Ермолинского участкового лесничества Кузнецовой Елизаветой Михайловной' selected>
-                            Кузнецова, участковый Ермолинского
-                        </option>
-                        <option value='участковым лесничим Новгородского участкового лесничества Марковой Ириной Фирсовной'>
-                            Маркова, участковый Новгородского
-                        </option>
-                    </select>    
-                </div> -->
-                
-                
-
-                <button class="bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" id="generate_patrol_report">Сгенерировать</button>
-            </form>            
         </div>
 
         <div id="form3" class="hidden">

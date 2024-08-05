@@ -73,8 +73,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Генерация задания на проведение патрулирования
-    document.getElementById('generate_patrol_task').addEventListener('click', (e) => {
+    // Генерация акта, задания, касаемо проведённого патрулирования
+    document.getElementById('create_report_conducted_patrol').addEventListener('click', (e) => {
         e.preventDefault();
 
         let Time_assignment_issue = document.getElementById("Time_assignment_issue").value;
