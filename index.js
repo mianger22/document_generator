@@ -105,8 +105,8 @@ document.addEventListener("DOMContentLoaded", () => {
         {
             custom_alert("Необходимо заполнить все поля!");
         } else {
-            if (checking_format_act_numbers(Number_patrol_act) === false) {
-                custom_alert(`Номер акта должен быть не более 4х цифр`);
+            if (Number_patrol_act.length > 4) {
+                custom_alert(`Номер акта должен быть не более 4 цифр`);
             } else if (check_format_Patrol_route_number(Patrol_route_number) === false) {
                 custom_alert(`Номер маршрута должен быть вида 75 6`);
             } else if (check_format_Time_assignment_issue(Time_assignment_issue) === false) {
