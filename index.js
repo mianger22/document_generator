@@ -18,7 +18,6 @@ const custom_alert = (message) => {
 
 // Функции проверки введённого значения на соответствие нужному формату
 const check_format_Patrol_route_number = (value) => /^\d{2} \d$/.test(value);
-const checking_format_act_numbers = (value) => /^\d{1,4}$/.test(value);
 const check_format_Time_assignment_issue = (value) => /^\d{2} \d{2}$/.test(value);
 
 // Проверка на корректность введённого времени
@@ -81,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         let Time_assignment_issue = document.getElementById("Time_assignment_issue").value;
         const Date_assignment_issue = document.getElementById("Date_assignment_issue").value;
-        const Task_number = document.getElementById("Task_number").value;
+        const Patrol_task_number = document.getElementById("Patrol_task_number").value;
         const Date_issue_task = document.getElementById("Date_issue_task").value;
         const Patrol_date = document.getElementById("Patrol_date").value;
         let Patrol_route_number = document.getElementById("Patrol_route_number").value;
@@ -99,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const Is_there_photo_table = document.querySelector("#Is_there_photo_table").checked === true
         ? ", фототаблица" : "";
 
-        if (Time_assignment_issue === "" || Date_assignment_issue === "" || Task_number === "" || Date_issue_task === "" ||
+        if (Time_assignment_issue === "" || Date_assignment_issue === "" || Patrol_task_number === "" || Date_issue_task === "" ||
             Patrol_date === "" || Patrol_route_number === "" || What_date_was_approved === "" || Year_patrol === "" ||
             Person_issued_task === "" || Full_name_senior_patroller === "" || Full_name_junior_patroller === "" || Number_patrol_act === "" || 
             Date_patrol_act === "" || Patrol_route_number__act === "" || Patrol_report__act === "") 
@@ -108,15 +107,13 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             if (checking_format_act_numbers(Number_patrol_act) === false) {
                 custom_alert(`Номер акта должен быть не более 4х цифр`);
-            } else if (checking_format_act_numbers(Patrol_task_number__act) === false) {
-                custom_alert(`Номер задания должен быть не более 4х цифр`);
             } else if (check_format_Patrol_route_number(Patrol_route_number) === false) {
                 custom_alert(`Номер маршрута должен быть вида 75 6`);
             } else if (check_format_Time_assignment_issue(Time_assignment_issue) === false) {
                 custom_alert("Время выдачи задания должно быть вида 12 30");
             } else if (validate_getted_time(Time_assignment_issue) === false) {
                 custom_alert("Время выдачи задания должно быть корректным"); 
-            } else if (Task_number.length > 4) {
+            } else if (Patrol_task_number.length > 4) {
                 custom_alert("Номер задания должен быть не более 4 цифр"); 
             } else {
                 Time_assignment_issue = `${Time_assignment_issue.split(" ")[0]} часов ${Time_assignment_issue.split(" ")[1]} минут`;
@@ -217,7 +214,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         doc.render({
                             Initials_senior_patroller, Initials_junior_patroller, Senior_patroller, 
                             Junior_patroller, Additional_order, Time_assignment_issue, Date_assignment_issue, 
-                            Task_number, Date_issue_task, Patrol_date, Patrol_route_number, What_date_was_approved, 
+                            Patrol_task_number, Date_issue_task, Patrol_date, Patrol_route_number, What_date_was_approved, 
                             Year_patrol, Year_patrol, Person_issued_task
                         });
 
@@ -230,7 +227,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         // Создание элемента ссылки для скачивания файла
                         const link = document.createElement('a');
                         link.href = URL.createObjectURL(out);
-                        link.download = `Задание на проведение патрулирования по МБ л-ву № ${Task_number}.docx`;
+                        link.download = `Задание на проведение патрулирования по МБ л-ву № ${Patrol_task_number}.docx`;
                         link.click();
 
                         custom_alert("Конец")
@@ -258,7 +255,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         // Обработка документа (замена {user_name} на имя пользователя, {user_surname} на фамилию пользователя и т.д.)
                         doc.render({
                             Initials_senior_patroller__act, Initials_junior_patroller__act, Senior_patroller__act, Junior_patroller__act, 
-                            Number_patrol_act, Date_patrol_act, Patrol_task_number__act, Date_patrol_task__act, Patrol_route_number__act, 
+                            Number_patrol_act, Date_patrol_act, Patrol_task_number, Date_patrol_task__act, Patrol_route_number__act, 
                             Patrol_report__act, Is_there_photo_table
                         });
 
