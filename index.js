@@ -92,124 +92,17 @@ document.addEventListener("DOMContentLoaded", () => {
         const Junior_patroller = document.getElementById("Junior_patroller").value;
         const Additional_order = document.querySelector("#Additional_order").checked === true
             ? " (приказ директора от _____._____._____ года № _____)" : "";
-
-        if (Time_assignment_issue === "" || Date_assignment_issue === "" || Task_number === "" || Date_issue_task === "" ||
-            Patrol_date === "" || Patrol_route_number === "" || What_date_was_approved === "" || Year_patrol === "" ||
-            Person_issued_task === "" || Senior_patroller === "" || Junior_patroller === "") 
-        {
-            custom_alert("Необходимо заполнить все поля!");
-        } else {
-            if (check_format_Patrol_route_number(Patrol_route_number) === false) {
-                custom_alert(`
-                    Номер маршрута должен быть вида 
-                    75 6`);
-            } else {
-                if (check_format_Time_assignment_issue(Time_assignment_issue) === false) {
-                    custom_alert("Время выдачи задания должно быть вида 12 30");
-                } else {
-                    if (validate_getted_time(Time_assignment_issue) === false) {
-                        custom_alert("Время выдачи задания должно быть корректным"); 
-                    } else {
-                        if (Task_number.length > 4) {
-                            custom_alert("Номер задания должен быть не более 4 цифр"); 
-                        } else {
-                            Time_assignment_issue = `${Time_assignment_issue.split(" ")[0]} часов ${Time_assignment_issue.split(" ")[1]} минут`;
-                            Patrol_route_number = Patrol_route_number.replace(/ /g, ',');
-
-                            // Создание фамилии с инициалами из полного имени
-                            let Initials_senior_patroller, Initials_junior_patroller;
-
-                            // Создание инициалов старшего патрульной группы
-                            switch (Senior_patroller) {
-                                case 'мастер леса Мясноборского участкового лесничества Устинов Дмитрий Сергеевич':
-                                    Initials_senior_patroller = 'мастер леса Мясноборского участкового лесничества Устинов Д.С.';
-                                    break;
-                                case 'участковый лесничий Ермолинского участкового лесничества Кузнецова Елизавета Михайловна':
-                                    Initials_senior_patroller = 'участковый лесничий Ермолинского участкового лесничества Кузнецова Е.М.';
-                                    break;
-                                case 'участковый лесничий Новгородского участкового лесничества Маркова Ирина Фирсовна':
-                                    Initials_senior_patroller = 'участковый лесничий Новгородского участкового лесничества Маркова И.Ф.';
-                                    break;
-                            }
-
-                            // Создание инициалов младшего патрульной группы
-                            switch (Junior_patroller) {
-                                case 'мастер леса Мясноборского участкового лесничества Устинов Дмитрий Сергеевич':
-                                    Initials_junior_patroller = 'мастер леса Мясноборского участкового лесничества Устинов Д.С.';
-                                    break;
-                                case 'участковый лесничий Ермолинского участкового лесничества Кузнецова Елизавета Михайловна':
-                                    Initials_junior_patroller = 'участковый лесничий Ермолинского участкового лесничества Кузнецова Е.М.';
-                                    break;
-                                case 'участковый лесничий Новгородского участкового лесничества Маркова Ирина Фирсовна':
-                                    Initials_junior_patroller = 'участковый лесничий Новгородского участкового лесничества Маркова И.Ф.';
-                                    break;
-                            }
-
-                            // Загрузка заранее определенного файла, лежащего в той же директории
-                            fetch('Шаблон задания на патрулирование.docx')
-                                .then(response => {
-                                    if (!response.ok) {
-                                        throw new Error('Network response was not ok ' + response.statusText);
-                                    }
-                                    return response.arrayBuffer();
-                                })
-                                .then(data => {
-                                    const zip = new PizZip(data);
-                                    const doc = new window.docxtemplater(zip, {
-                                        paragraphLoop: true,
-                                        linebreaks: true,
-                                    });
-
-                                    // Обработка документа (замена {user_name} на имя пользователя, {user_surname} на фамилию пользователя и т.д.)
-                                    doc.render({
-                                        Initials_senior_patroller, Initials_junior_patroller, Senior_patroller, 
-                                        Junior_patroller, Additional_order, Time_assignment_issue, Date_assignment_issue, 
-                                        Task_number, Date_issue_task, Patrol_date, Patrol_route_number, What_date_was_approved, 
-                                        Year_patrol, Year_patrol, Person_issued_task
-                                    });
-
-                                    // Генерация и сохранение нового документа
-                                    const out = doc.getZip().generate({
-                                        type: "blob",
-                                        mimeType: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-                                    });
-
-                                    // Создание элемента ссылки для скачивания файла
-                                    const link = document.createElement('a');
-                                    link.href = URL.createObjectURL(out);
-                                    link.download = `Задание на проведение патрулирования по МБ л-ву № ${Task_number}.docx`;
-                                    link.click();
-
-                                    custom_alert("Конец")
-                                })
-                                .catch(error => {
-                                    console.error('Ошибка:', error);
-                                    alert('Ошибка! Смотри в console');
-                                });
-                        }
-                    }
-                }
-            }
-        }
-    });
-
-    // Генерация акта о проведённом патрулировании
-    document.getElementById('generate_patrol_report').addEventListener('click', (e) => {
-        e.preventDefault();
-
         const Number_patrol_act = document.getElementById("Number_patrol_act").value;
         const Date_patrol_act = document.getElementById("Date_patrol_act").value;
-        const Patrol_task_number__act = document.getElementById("Patrol_task_number__act").value;
-        const Date_patrol_task__act = document.getElementById("Date_patrol_task__act").value;
-        const Senior_patroller__act = document.getElementById("Senior_patroller__act").value;
-        const Junior_patroller__act = document.getElementById("Junior_patroller__act").value;
         let Patrol_route_number__act = document.getElementById("Patrol_route_number__act").value;
         const Patrol_report__act = document.getElementById("Patrol_report__act").value;
         const Is_there_photo_table = document.querySelector("#Is_there_photo_table").checked === true
         ? ", фототаблица" : "";
 
-        if (Number_patrol_act === "" || Date_patrol_act === "" || Patrol_task_number__act === "" || Date_patrol_task__act === "" ||
-            Senior_patroller__act === "" || Junior_patroller__act === "" || Patrol_route_number__act === "" || Patrol_report__act === "") 
+        if (Time_assignment_issue === "" || Date_assignment_issue === "" || Task_number === "" || Date_issue_task === "" ||
+            Patrol_date === "" || Patrol_route_number === "" || What_date_was_approved === "" || Year_patrol === "" ||
+            Person_issued_task === "" || Senior_patroller === "" || Junior_patroller === "" || Number_patrol_act === "" || 
+            Date_patrol_act === "" || Patrol_route_number__act === "" || Patrol_report__act === "") 
         {
             custom_alert("Необходимо заполнить все поля!");
         } else {
@@ -217,7 +110,49 @@ document.addEventListener("DOMContentLoaded", () => {
                 custom_alert(`Номер акта должен быть не более 4х цифр`);
             } else if (checking_format_act_numbers(Patrol_task_number__act) === false) {
                 custom_alert(`Номер задания должен быть не более 4х цифр`);
+            } else if (check_format_Patrol_route_number(Patrol_route_number) === false) {
+                custom_alert(`Номер маршрута должен быть вида 75 6`);
+            } else if (check_format_Time_assignment_issue(Time_assignment_issue) === false) {
+                custom_alert("Время выдачи задания должно быть вида 12 30");
+            } else if (validate_getted_time(Time_assignment_issue) === false) {
+                custom_alert("Время выдачи задания должно быть корректным"); 
+            } else if (Task_number.length > 4) {
+                custom_alert("Номер задания должен быть не более 4 цифр"); 
             } else {
+                Time_assignment_issue = `${Time_assignment_issue.split(" ")[0]} часов ${Time_assignment_issue.split(" ")[1]} минут`;
+                Patrol_route_number = Patrol_route_number.replace(/ /g, ',');
+
+                // Создание фамилии с инициалами из полного имени
+                let Initials_senior_patroller, Initials_junior_patroller;
+
+                // Создание инициалов старшего патрульной группы
+                switch (Senior_patroller) {
+                    case 'мастер леса Мясноборского участкового лесничества Устинов Дмитрий Сергеевич':
+                        Initials_senior_patroller = 'мастер леса Мясноборского участкового лесничества Устинов Д.С.';
+                        break;
+                    case 'участковый лесничий Ермолинского участкового лесничества Кузнецова Елизавета Михайловна':
+                        Initials_senior_patroller = 'участковый лесничий Ермолинского участкового лесничества Кузнецова Е.М.';
+                        break;
+                    case 'участковый лесничий Новгородского участкового лесничества Маркова Ирина Фирсовна':
+                        Initials_senior_patroller = 'участковый лесничий Новгородского участкового лесничества Маркова И.Ф.';
+                        break;
+                }
+
+                // Создание инициалов младшего патрульной группы
+                switch (Junior_patroller) {
+                    case 'мастер леса Мясноборского участкового лесничества Устинов Дмитрий Сергеевич':
+                        Initials_junior_patroller = 'мастер леса Мясноборского участкового лесничества Устинов Д.С.';
+                        break;
+                    case 'участковый лесничий Ермолинского участкового лесничества Кузнецова Елизавета Михайловна':
+                        Initials_junior_patroller = 'участковый лесничий Ермолинского участкового лесничества Кузнецова Е.М.';
+                        break;
+                    case 'участковый лесничий Новгородского участкового лесничества Маркова Ирина Фирсовна':
+                        Initials_junior_patroller = 'участковый лесничий Новгородского участкового лесничества Маркова И.Ф.';
+                        break;
+                }
+
+                //------------------------------ код  из блока создания акта
+
                 // Создание фамилии с инициалами из полного имени
                 let Initials_senior_patroller__act, Initials_junior_patroller__act;
 
@@ -278,6 +213,50 @@ document.addEventListener("DOMContentLoaded", () => {
                         break;
                 }
 
+                //-----------------------------
+
+                // Загрузка заранее определенного файла, лежащего в той же директории
+                fetch('Шаблон задания на патрулирование.docx')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok ' + response.statusText);
+                        }
+                        return response.arrayBuffer();
+                    })
+                    .then(data => {
+                        const zip = new PizZip(data);
+                        const doc = new window.docxtemplater(zip, {
+                            paragraphLoop: true,
+                            linebreaks: true,
+                        });
+
+                        // Обработка документа (замена {user_name} на имя пользователя, {user_surname} на фамилию пользователя и т.д.)
+                        doc.render({
+                            Initials_senior_patroller, Initials_junior_patroller, Senior_patroller, 
+                            Junior_patroller, Additional_order, Time_assignment_issue, Date_assignment_issue, 
+                            Task_number, Date_issue_task, Patrol_date, Patrol_route_number, What_date_was_approved, 
+                            Year_patrol, Year_patrol, Person_issued_task
+                        });
+
+                        // Генерация и сохранение нового документа
+                        const out = doc.getZip().generate({
+                            type: "blob",
+                            mimeType: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                        });
+
+                        // Создание элемента ссылки для скачивания файла
+                        const link = document.createElement('a');
+                        link.href = URL.createObjectURL(out);
+                        link.download = `Задание на проведение патрулирования по МБ л-ву № ${Task_number}.docx`;
+                        link.click();
+
+                        custom_alert("Конец")
+                    })
+                    .catch(error => {
+                        console.error('Ошибка:', error);
+                        alert('Ошибка! Смотри в console');
+                    });
+
                 // Загрузка заранее определенного файла, лежащего в той же директории
                 fetch('Шаблон акта о проведённом патрулировании.docx')
                     .then(response => {
@@ -319,6 +298,6 @@ document.addEventListener("DOMContentLoaded", () => {
                         alert('Ошибка! Смотри в console');
                     });
             }
-        };
+        }
     });
 });
