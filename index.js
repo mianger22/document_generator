@@ -88,8 +88,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const What_date_was_approved = document.getElementById("What_date_was_approved").value;
         const Year_patrol = document.getElementById("Year_patrol").value;
         const Person_issued_task = document.getElementById("Person_issued_task").value;
-        const Senior_patroller = document.getElementById("Senior_patroller").value;
-        const Junior_patroller = document.getElementById("Junior_patroller").value;
+        const Full_name_senior_patroller = document.getElementById("Full_name_senior_patroller").value;
+        const Full_name_junior_patroller = document.getElementById("Full_name_junior_patroller").value;
         const Additional_order = document.querySelector("#Additional_order").checked === true
             ? " (приказ директора от _____._____._____ года № _____)" : "";
         const Number_patrol_act = document.getElementById("Number_patrol_act").value;
@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (Time_assignment_issue === "" || Date_assignment_issue === "" || Task_number === "" || Date_issue_task === "" ||
             Patrol_date === "" || Patrol_route_number === "" || What_date_was_approved === "" || Year_patrol === "" ||
-            Person_issued_task === "" || Senior_patroller === "" || Junior_patroller === "" || Number_patrol_act === "" || 
+            Person_issued_task === "" || Full_name_senior_patroller === "" || Full_name_junior_patroller === "" || Number_patrol_act === "" || 
             Date_patrol_act === "" || Patrol_route_number__act === "" || Patrol_report__act === "") 
         {
             custom_alert("Необходимо заполнить все поля!");
@@ -123,64 +123,47 @@ document.addEventListener("DOMContentLoaded", () => {
                 Patrol_route_number = Patrol_route_number.replace(/ /g, ',');
 
                 // Создание фамилии с инициалами из полного имени
-                let Initials_senior_patroller, Initials_junior_patroller;
+                let Senior_patroller, Declension_name_senior_patroller, Initials_senior_patroller, Junior_patroller, Declension_name_junior_patroller, Initials_junior_patroller;
 
                 // Создание инициалов старшего патрульной группы
-                switch (Senior_patroller) {
+                switch (Full_name_senior_patroller) {
                     case 'мастер леса Мясноборского участкового лесничества Устинов Дмитрий Сергеевич':
-                        Initials_senior_patroller = 'мастер леса Мясноборского участкового лесничества Устинов Д.С.';
+                        Senior_patroller = 'мастер леса Мясноборского участкового лесничества Устинов Д.С.';
+                        Declension_name_senior_patroller = 'мастером леса Мясноборского участкового лесничества Устиновым Дмитрием Сергеевичем';
+                        Initials_senior_patroller = 'Устинов Д.С.';
                         break;
                     case 'участковый лесничий Ермолинского участкового лесничества Кузнецова Елизавета Михайловна':
-                        Initials_senior_patroller = 'участковый лесничий Ермолинского участкового лесничества Кузнецова Е.М.';
+                        Senior_patroller = 'участковый лесничий Ермолинского участкового лесничества Кузнецова Е.М.';
+                        Declension_name_senior_patroller = 'участковым лесничим Ермолинского участкового лесничества Кузнецовой Елизаветой Михайловной';
+                        Initials_senior_patroller = 'Кузнецова Е.М.';
                         break;
                     case 'участковый лесничий Новгородского участкового лесничества Маркова Ирина Фирсовна':
-                        Initials_senior_patroller = 'участковый лесничий Новгородского участкового лесничества Маркова И.Ф.';
+                        Senior_patroller = 'участковый лесничий Новгородского участкового лесничества Маркова И.Ф.';
+                        Declension_name_senior_patroller = 'участковым лесничим Новгородского участкового лесничества Марковой Ириной Фирсовной';
+                        Initials_senior_patroller = 'Маркова И.Ф.';
                         break;
                 }
 
                 // Создание инициалов младшего патрульной группы
-                switch (Junior_patroller) {
+                switch (Full_name_junior_patroller) {
                     case 'мастер леса Мясноборского участкового лесничества Устинов Дмитрий Сергеевич':
-                        Initials_junior_patroller = 'мастер леса Мясноборского участкового лесничества Устинов Д.С.';
+                        Junior_patroller = 'мастер леса Мясноборского участкового лесничества Устинов Д.С.';
+                        Declension_name_junior_patroller = 'мастером леса Мясноборского участкового лесничества Устиновым Дмитрием Сергеевичем';
+                        Initials_junior_patroller = 'Устинов Д.С.';
                         break;
                     case 'участковый лесничий Ермолинского участкового лесничества Кузнецова Елизавета Михайловна':
-                        Initials_junior_patroller = 'участковый лесничий Ермолинского участкового лесничества Кузнецова Е.М.';
+                        Junior_patroller = 'участковый лесничий Ермолинского участкового лесничества Кузнецова Е.М.';
+                        Declension_name_junior_patroller = 'участковым лесничим Ермолинского участкового лесничества Кузнецовой Елизаветой Михайловной';
+                        Initials_junior_patroller = 'Кузнецова Е.М.';
                         break;
                     case 'участковый лесничий Новгородского участкового лесничества Маркова Ирина Фирсовна':
-                        Initials_junior_patroller = 'участковый лесничий Новгородского участкового лесничества Маркова И.Ф.';
+                        Junior_patroller = 'участковый лесничий Новгородского участкового лесничества Маркова И.Ф.';
+                        Declension_name_junior_patroller = 'участковым лесничим Новгородского участкового лесничества Марковой Ириной Фирсовной';
+                        Initials_junior_patroller = 'Маркова И.Ф.';
                         break;
                 }
 
                 //------------------------------ код  из блока создания акта
-
-                // Создание фамилии с инициалами из полного имени
-                let Initials_senior_patroller__act, Initials_junior_patroller__act;
-
-                // Создание инициалов старшего патрульной группы
-                switch (Senior_patroller__act) {
-                    case 'мастером леса Мясноборского участкового лесничества Устиновым Дмитрием Сергеевичем':
-                        Initials_senior_patroller__act = 'Устинов Д.С.';
-                        break;
-                    case 'участковым лесничим Ермолинского участкового лесничества Кузнецовой Елизаветой Михайловной':
-                        Initials_senior_patroller__act = 'Кузнецова Е.М.';
-                        break;
-                    case 'участковым лесничим Новгородского участкового лесничества Марковой Ириной Фирсовной':
-                        Initials_senior_patroller__act = 'Маркова И.Ф.';
-                        break;
-                }
-
-                // Создание инициалов младшего патрульной группы
-                switch (Junior_patroller__act) {
-                    case 'мастером леса Мясноборского участкового лесничества Устиновым Дмитрием Сергеевичем':
-                        Initials_junior_patroller__act = 'Устинов Д.С.';
-                        break;
-                    case 'участковым лесничим Ермолинского участкового лесничества Кузнецовой Елизаветой Михайловной':
-                        Initials_junior_patroller__act = 'Кузнецова Е.М.';
-                        break;
-                    case 'участковым лесничим Новгородского участкового лесничества Марковой Ириной Фирсовной':
-                        Initials_junior_patroller__act = 'Маркова И.Ф.';
-                        break;
-                }
 
                 // Создание описания маршрута патрулирования
                 switch (Patrol_route_number__act) {
