@@ -1,11 +1,11 @@
 // Общие функции
-const custom_alert = (message) => {
+const custom_alert = (message, color = "red") => {
     return window.Swal.fire({
         title: message,
         width: 400,
         height: 200,
         padding: "1em",
-        color: "red",
+        color: color,
         background: "#fff url(/pictures/trees_phone.png)",
     });
 }
@@ -216,7 +216,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         link.download = `Задание на проведение патрулирования по МБ л-ву № ${Patrol_task_number}.docx`;
                         link.click();
 
-                        custom_alert("Готово!")
+                        custom_alert("Готово!", "green")
                     })
                     .catch(error => {
                         console.error('Ошибка:', error);
@@ -257,7 +257,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         link.download = `Акт о проведённом патрулировании по МБ л-ву № ${Number_patrol_act}.docx`;
                         link.click();
 
-                        custom_alert("Готово!")
+                        custom_alert("Готово!", "green")
                     })
                     .catch(error => {
                         console.error('Ошибка:', error);
