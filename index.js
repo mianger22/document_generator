@@ -71,6 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById('create_report_conducted_patrol').addEventListener('click', (e) => {
         e.preventDefault();
 
+        // Получение данных из формы
         let Time_assignment_issue = document.getElementById("Time_assignment_issue").value;
         const Date_assignment_issue = document.getElementById("Date_assignment_issue").value;
         const Patrol_task_number = document.getElementById("Patrol_task_number").value;
@@ -89,13 +90,42 @@ document.addEventListener("DOMContentLoaded", () => {
         const Patrol_report = document.getElementById("Patrol_report").value;
         const Is_there_photo_table = document.querySelector("#Is_there_photo_table").checked === true ? ", фототаблица" : "";
 
-        if (Time_assignment_issue === "" || Date_assignment_issue === "" || Patrol_task_number === "" || Date_issue_task === "" ||
-            Patrol_date === "" || Patrol_route_number === "" || What_date_was_approved === "" || Year_patrol === "" ||
-            Person_issued_task === "" || Full_name_senior_patroller === "" || Full_name_junior_patroller === "" || Number_patrol_act === "" || 
-            Date_patrol_act === "" || Patrol_report === "") 
-        {
+        // Функция, фиксирующая незаполненные поля
+        function checkEmptyValues(variableObj) {
+            const emptyVariableNames = [];
+        
+            for (const [key, value] of Object.entries(variableObj)) {
+                if (value === null || value === undefined || value === '') {
+                    emptyVariableNames.push(key);
+                }
+            }
+        
+            return emptyVariableNames;
+        }
+        
+        // Проверка на пустые значения
+        const results = checkEmptyValues( 
+            { 
+                Time_assignment_issue, Date_assignment_issue, Patrol_task_number, Date_issue_task,
+                Patrol_date, Patrol_route_number, What_date_was_approved, Year_patrol,
+                Person_issued_task, Full_name_senior_patroller, Full_name_junior_patroller, Number_patrol_act, 
+                Date_patrol_act, Patrol_report 
+            }
+        );
+
+        if (results.length > 0) {
             custom_alert("Необходимо заполнить все поля!");
+
+            // Подсвечивание незаполненных полей
+            results.forEach(element => {
+                document.getElementById(element).style.borderColor = "red";
+            });
         } else {
+            // Возвращение цвета границы полей к стандартному значению
+            results.forEach(element => {
+                document.getElementById(element).style.removeProperty('border-сolor');
+            });
+
             if (Number_patrol_act.length > 4) {
                 custom_alert(`Номер акта должен быть не более 4 цифр`);
             } else if (Patrol_task_number.length > 4) {
@@ -265,5 +295,19 @@ document.addEventListener("DOMContentLoaded", () => {
                     });
             }
         }
+
+        // Следить за состоянием полей, чтобы убирать красное обрамление, когда пользователь кликает по полю
+        results.forEach(element => {
+            document.getElementById(element).addEventListener("click", (elem) => {
+                document.getElementById(element).style.borderColor = "green";
+
+                // при уходе с поля, не заполнив его, граница снова окрашивается в красный
+                document.getElementById(element).addEventListener('blur', function() {
+                    if (this.value === "") {
+                        document.getElementById(element).style.borderColor = "red";
+                    }
+                });
+            });
+        });
     });
 });
