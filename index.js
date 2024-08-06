@@ -339,7 +339,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     });
 
                 // Формирование нужной схемы
-                fetch('Схема проведённого патрулирования.docx')
+                fetch('Шаблон схемы проведённого патрулирования.docx')
                     .then(response => {
                         if (!response.ok) {
                             throw new Error('Network response was not ok ' + response.statusText);
