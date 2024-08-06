@@ -395,7 +395,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                             // Обработка документа (замена {user_name} на имя пользователя, {user_surname} на фамилию пользователя и т.д.)
                             doc.render({
-                                Number_patrol_act, Date_patrol_act, 
+                                Number_patrol_act, Date_patrol_act, Date_assignment_issue
                             });
 
                             // Генерация и сохранение нового документа
