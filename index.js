@@ -376,6 +376,47 @@ document.addEventListener("DOMContentLoaded", () => {
                         console.error('Ошибка:', error);
                         alert('Ошибка! Смотри в console');
                     });
+
+                // Формирование нужной фототаблицы
+                if (Is_there_photo_table !== "") {
+                    fetch('Шаблон фототаблицы по патрулированию.docx')
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Network response was not ok ' + response.statusText);
+                            }
+                            return response.arrayBuffer();
+                        })
+                        .then(data => {
+                            const zip = new PizZip(data);
+                            const doc = new window.docxtemplater(zip, {
+                                paragraphLoop: true,
+                                linebreaks: true,
+                            });
+
+                            // Обработка документа (замена {user_name} на имя пользователя, {user_surname} на фамилию пользователя и т.д.)
+                            doc.render({
+                                Number_patrol_act, Date_patrol_act, 
+                            });
+
+                            // Генерация и сохранение нового документа
+                            const out = doc.getZip().generate({
+                                type: "blob",
+                                mimeType: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                            });
+
+                            // Создание элемента ссылки для скачивания файла
+                            const link = document.createElement('a');
+                            link.href = URL.createObjectURL(out);
+                            link.download = `Фототаблица проведённого патрулирования по МБ л-ву.docx`;
+                            link.click();
+
+                            custom_alert("Готово!", "green")
+                        })
+                        .catch(error => {
+                            console.error('Ошибка:', error);
+                            alert('Ошибка! Смотри в console');
+                        });
+                }
             }
         }
 
