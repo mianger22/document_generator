@@ -309,11 +309,14 @@ document.addEventListener("DOMContentLoaded", () => {
                             linebreaks: true,
                         });
 
+                        // Создание отчёта о патрулировании
+                        let Initial_report = `Во время патрулирования не было обнаружено ни нарушений лесного законодательства, ни лесозаготовительной техники, ни граждан, незаконно вывозящих древесину из лесного фонда. ${Patrol_report}, маршрут которого составил ${Length_patrol}`;
+
                         // Обработка документа (замена {user_name} на имя пользователя, {user_surname} на фамилию пользователя и т.д.)
                         doc.render({
                             Declension_name_senior_patroller, Initials_senior_patroller, Declension_name_junior_patroller, 
                             Initials_junior_patroller, Number_patrol_act, Date_patrol_act, Patrol_task_number, Date_issue_task, 
-                            Patrol_route_declaration, Patrol_report, Is_there_photo_table
+                            Patrol_route_declaration, Initial_report, Is_there_photo_table
                         });
 
                         // Генерация и сохранение нового документа
