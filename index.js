@@ -164,6 +164,11 @@ document.addEventListener("DOMContentLoaded", () => {
                         Declension_name_senior_patroller = 'мастером леса Советского участкового лесничества Капитоновой Мариной Александровной';
                         Initials_senior_patroller = 'Капитонова М.А.';
                         break;
+                    case 'мастер леса Новгородского участкового лесничества Зайцев Даниил Алексеевич':
+                        Senior_patroller = 'мастер леса Новгородского участкового лесничества Зайцев Д.А.';
+                        Declension_name_senior_patroller = 'мастером леса Новгородского участкового лесничества Зайцевым Даниилом Алексеевичем';
+                        Initials_senior_patroller = 'Зайцев Д.А.';
+                        break;
                 }
 
                 // Создание инициалов младшего патрульной группы
@@ -187,6 +192,11 @@ document.addEventListener("DOMContentLoaded", () => {
                         Junior_patroller = 'мастер леса Советского участкового лесничества Капитонова М.А.';
                         Declension_name_junior_patroller = 'мастером леса Советского участкового лесничества Капитоновой Мариной Александровной';
                         Initials_junior_patroller = 'Капитонова М.А.';
+                        break;
+                    case 'мастер леса Новгородского участкового лесничества Зайцев Даниил Алексеевич':
+                        Junior_patroller = 'мастер леса Новгородского участкового лесничества Зайцев Д.А.';
+                        Declension_name_junior_patroller = 'мастером леса Новгородского участкового лесничества Зайцевым Даниилом Алексеевичем';
+                        Initials_junior_patroller = 'Зайцев Д.А.';
                         break;
                 }
 
