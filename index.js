@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 Time_assignment_issue, Date_assignment_issue, Patrol_task_number, Date_issue_task,
                 Patrol_date, Patrol_route_number, What_date_was_approved, Year_patrol,
                 Person_issued_task, Full_name_senior_patroller, Full_name_junior_patroller, Number_patrol_act, 
-                Date_patrol_act, Patrol_report 
+                Date_patrol_act 
             }
         );
 
@@ -318,7 +318,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         });
 
                         // Создание отчёта о патрулировании
-                        let Initial_report = `Во время патрулирования не было обнаружено ни нарушений лесного законодательства, ни лесозаготовительной техники, ни граждан, незаконно вывозящих древесину из лесного фонда. ${Patrol_report}, маршрут которого составил ${Length_patrol}`;
+                        const Initial_report = `Во время патрулирования не было обнаружено ни нарушений лесного законодательства, ни лесозаготовительной техники, ни граждан, незаконно вывозящих древесину из лесного фонда. ${Patrol_report}, маршрут которого составил ${Length_patrol}`;
 
                         // Обработка документа (замена {user_name} на имя пользователя, {user_surname} на фамилию пользователя и т.д.)
                         doc.render({
