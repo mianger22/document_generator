@@ -292,7 +292,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         // Создание элемента ссылки для скачивания файла
                         const link = document.createElement('a');
                         link.href = URL.createObjectURL(out);
-                        link.download = `Задание на проведение патрулирования по МБ л-ву № ${Patrol_task_number}.docx`;
+                        link.download = `1. Задание на проведение патрулирования по МБ л-ву № ${Patrol_task_number}.docx`;
                         link.click();
                     })
                     .catch(error => {
@@ -316,13 +316,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         });
 
                         // Создание отчёта о патрулировании
-                        const Initial_report = `Во время патрулирования не было обнаружено ни нарушений лесного законодательства, 
-                        ни лесозаготовительной техники, ни граждан, незаконно вывозящих древесину из лесного фонда. 
-                        Также мною были проинформированы ${Number_informed_people} граждан деревни ${Village_informed_people} 
-                        о правилах пожарной безопасности в лесном массиве и прилегающей территории. Каждому гражданину был 
-                        вручён информационный лист с соответствующей информацией. Кроме того мною была прикреплена памятка с правилами 
-                        пожарной безопасности в деревне ${Village_leaflet} (${Object_leaflet}). Для проведения патрулирования мы 
-                        задействовали автомобиль ${Patrol_car}, маршрут которого составил ${Length_patrol}`;
+                        const Initial_report = `Во время патрулирования не было обнаружено ни нарушений лесного законодательства, ни лесозаготовительной техники, ни граждан, незаконно вывозящих древесину из лесного фонда. Также мною были проинформированы ${Number_informed_people} граждан деревни ${Village_informed_people} о правилах пожарной безопасности в лесном массиве и прилегающей территории. Каждому гражданину был вручён информационный лист с соответствующей информацией. Кроме того мною была прикреплена памятка с правилами пожарной безопасности в деревне ${Village_leaflet} (${Object_leaflet}). Для проведения патрулирования мы задействовали автомобиль ${Patrol_car}, маршрут которого составил ${Length_patrol}`;
 
                         // Обработка документа (замена {user_name} на имя пользователя, {user_surname} на фамилию пользователя и т.д.)
                         doc.render({
@@ -340,7 +334,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         // Создание элемента ссылки для скачивания файла
                         const link = document.createElement('a');
                         link.href = URL.createObjectURL(out);
-                        link.download = `Акт о проведённом патрулировании по МБ л-ву № ${Number_patrol_act}.docx`;
+                        link.download = `2. Акт о проведённом патрулировании по МБ л-ву № ${Number_patrol_act}.docx`;
                         link.click();
                     })
                     .catch(error => {
@@ -377,7 +371,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         // Создание элемента ссылки для скачивания файла
                         const link = document.createElement('a');
                         link.href = URL.createObjectURL(out);
-                        link.download = `Схема проведённого патрулирования по МБ л-ву.docx`;
+                        link.download = `3. Схема проведённого патрулирования по МБ л-ву.docx`;
                         link.click();
                     })
                     .catch(error => {
@@ -416,7 +410,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             // Создание элемента ссылки для скачивания файла
                             const link = document.createElement('a');
                             link.href = URL.createObjectURL(out);
-                            link.download = `Фототаблица проведённого патрулирования по МБ л-ву.docx`;
+                            link.download = `4. Фототаблица проведённого патрулирования по МБ л-ву.docx`;
                             link.click();
                         })
                         .catch(error => {
