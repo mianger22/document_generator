@@ -142,6 +142,9 @@
                 <div class="mb-4">
                     <input type="checkbox" id="Additional_order" name="Additional_order"> Дополнительный приказ
                 </div>
+
+                <!---------------------------------------------------------------------------------------------------- -->
+                
                 <div class="form-title text-indigo-600 text-sm mt-4 mb-4"><ins>Акт</ins></div>
                 <div class="mb-4">
                     <label class="block text-purple-700 text-sm font-bold mb-2" for="Number_patrol_act">Номер акта о патрулировании</label>
@@ -161,6 +164,50 @@
                 <div class="mb-4">
                     <input type="checkbox" id="Is_there_photo_table" name="Is_there_photo_table"> Есть ли фототаблица
                 </div>
+
+                <!---------------------------------------------------------------------------------------------------- -->
+
+                <div class="form-title text-indigo-600 text-sm mt-4 mb-4"><ins>Фототаблица</ins></div>
+                <div class="mb-4">
+                    <label class="block text-purple-700 text-sm font-bold mb-2" for="Object_leaflet">На что наклеено</label>
+                    <select id="Object_leaflet" name="Object_leaflet">
+                        <option value='остановка'>Остановка</option>
+                        <option value='доска объявлений'>Доска объявлений</option>
+                    </select>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-purple-700 text-sm font-bold mb-2" for="Village_leaflet">Деревня, в которой наклеено</label>
+                    <select id="Village_leaflet" name="Village_leaflet">
+                        <option disabled selected></option>
+                        <option value='Некохово'>Некохово</option>
+                        <option value='Захарьино'>Захарьино</option>
+                        <option value='Подберезье'>Подберезье</option>
+                        <option value='Вешки'>Вешки</option>
+                        <option value='Котовицы'>Котовицы</option>
+                        <option value='Мясной Бор'>Мясной Бор</option>
+                        <option value='Большое Замошье'>Большое Замошье</option>
+                        <option value='Малое Замошье'>Малое Замошье</option>
+                    </select>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-purple-700 text-sm font-bold mb-2" for="Number_informed_people">Сколько человек</label>
+                    <input class="input-field" id="Number_informed_people" type="number" placeholder="1">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-purple-700 text-sm font-bold mb-2" for="Village_informed_people">Деревня, в которой проинформированы люди</label>
+                    <select id="Village_informed_people" name="Village_informed_people">
+                        <option disabled selected></option>
+                        <option value='Некохово'>Некохово</option>
+                        <option value='Захарьино'>Захарьино</option>
+                        <option value='Подберезье'>Подберезье</option>
+                        <option value='Вешки'>Вешки</option>
+                        <option value='Котовицы'>Котовицы</option>
+                        <option value='Мясной Бор'>Мясной Бор</option>
+                        <option value='Большое Замошье'>Большое Замошье</option>
+                        <option value='Малое Замошье'>Малое Замошье</option>
+                    </select>
+                </div>
+
                 
                 <button class="bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" id="create_report_conducted_patrol">Создать акты</button>
             </form>

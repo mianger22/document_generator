@@ -72,6 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
         e.preventDefault();
 
         // Получение данных из формы
+        // 1. Данные для задания
         let Time_assignment_issue = document.getElementById("Time_assignment_issue").value;
         const Date_assignment_issue = document.getElementById("Date_assignment_issue").value;
         const Patrol_task_number = document.getElementById("Patrol_task_number").value;
@@ -85,10 +86,17 @@ document.addEventListener("DOMContentLoaded", () => {
         const Full_name_junior_patroller = document.getElementById("Full_name_junior_patroller").value;
         const Additional_order = document.querySelector("#Additional_order").checked === true
             ? " (приказ директора от _____._____._____ года № _____)" : "";
+        // 2. Данные для акта
         const Number_patrol_act = document.getElementById("Number_patrol_act").value;
         const Date_patrol_act = document.getElementById("Date_patrol_act").value;
         const Patrol_report = document.getElementById("Patrol_report").value;
         const Is_there_photo_table = document.querySelector("#Is_there_photo_table").checked === true ? ", фототаблица" : "";
+        // 3. Данные для фототаблицы
+        const Object_leaflet = document.getElementById("Object_leaflet").value;
+        const Village_leaflet = document.getElementById("Village_leaflet").value;
+        const Number_informed_people = document.getElementById("Number_informed_people").value;
+        const Village_informed_people = document.getElementById("Village_informed_people").value;
+        
 
         // Функция, фиксирующая незаполненные поля
         function checkEmptyValues(variableObj) {
@@ -395,7 +403,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
                             // Обработка документа (замена {user_name} на имя пользователя, {user_surname} на фамилию пользователя и т.д.)
                             doc.render({
-                                Number_patrol_act, Date_patrol_act, Date_assignment_issue
+                                Number_patrol_act, Date_patrol_act, Date_assignment_issue, Object_leaflet, Village_leaflet,
+                                Number_informed_people, Village_informed_people
                             });
 
                             // Генерация и сохранение нового документа
