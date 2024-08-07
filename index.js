@@ -403,7 +403,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                             // Обработка документа (замена {user_name} на имя пользователя, {user_surname} на фамилию пользователя и т.д.)
                             doc.render({
-                                Number_patrol_act, Date_patrol_act, Date_assignment_issue, Object_leaflet, Village_leaflet,
+                                Number_patrol_act, Date_patrol_act, Date_patrol, Object_leaflet, Village_leaflet,
                                 Number_informed_people, Village_informed_people
                             });
 
@@ -418,8 +418,6 @@ document.addEventListener("DOMContentLoaded", () => {
                             link.href = URL.createObjectURL(out);
                             link.download = `Фототаблица проведённого патрулирования по МБ л-ву.docx`;
                             link.click();
-
-                            custom_alert("Готово!", "green")
                         })
                         .catch(error => {
                             console.error('Ошибка:', error);
