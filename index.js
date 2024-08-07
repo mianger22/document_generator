@@ -294,8 +294,6 @@ document.addEventListener("DOMContentLoaded", () => {
                         link.href = URL.createObjectURL(out);
                         link.download = `Задание на проведение патрулирования по МБ л-ву № ${Patrol_task_number}.docx`;
                         link.click();
-
-                        custom_alert("Готово!", "green")
                     })
                     .catch(error => {
                         console.error('Ошибка:', error);
@@ -344,8 +342,6 @@ document.addEventListener("DOMContentLoaded", () => {
                         link.href = URL.createObjectURL(out);
                         link.download = `Акт о проведённом патрулировании по МБ л-ву № ${Number_patrol_act}.docx`;
                         link.click();
-
-                        custom_alert("Готово!", "green")
                     })
                     .catch(error => {
                         console.error('Ошибка:', error);
@@ -383,8 +379,6 @@ document.addEventListener("DOMContentLoaded", () => {
                         link.href = URL.createObjectURL(out);
                         link.download = `Схема проведённого патрулирования по МБ л-ву.docx`;
                         link.click();
-
-                        custom_alert("Готово!", "green")
                     })
                     .catch(error => {
                         console.error('Ошибка:', error);
