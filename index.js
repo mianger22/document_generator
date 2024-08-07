@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // 2. Данные для акта
         const Number_patrol_act = document.getElementById("Number_patrol_act").value;
         const Date_patrol_act = document.getElementById("Date_patrol_act").value;
-        const Patrol_report = document.getElementById("Patrol_report").value;
+        const Patrol_car = document.getElementById("Patrol_car").value;
         const Is_there_photo_table = document.querySelector("#Is_there_photo_table").checked === true ? ", фототаблица" : "";
         // 3. Данные для фототаблицы
         const Object_leaflet = document.getElementById("Object_leaflet").value;
@@ -318,7 +318,13 @@ document.addEventListener("DOMContentLoaded", () => {
                         });
 
                         // Создание отчёта о патрулировании
-                        const Initial_report = `Во время патрулирования не было обнаружено ни нарушений лесного законодательства, ни лесозаготовительной техники, ни граждан, незаконно вывозящих древесину из лесного фонда. ${Patrol_report}, маршрут которого составил ${Length_patrol}`;
+                        const Initial_report = `Во время патрулирования не было обнаружено ни нарушений лесного законодательства, 
+                        ни лесозаготовительной техники, ни граждан, незаконно вывозящих древесину из лесного фонда. 
+                        Также мною были проинформированы ${Number_informed_people} граждан деревни ${Village_informed_people} 
+                        о правилах пожарной безопасности в лесном массиве и прилегающей территории. Каждому гражданину был 
+                        вручён информационный лист с соответствующей информацией. Кроме того мною была прикреплена памятка с правилами 
+                        пожарной безопасности в деревне ${Village_leaflet} (${Object_leaflet}). Для проведения патрулирования мы 
+                        задействовали автомобиль ${Patrol_car}, маршрут которого составил ${Length_patrol}`;
 
                         // Обработка документа (замена {user_name} на имя пользователя, {user_surname} на фамилию пользователя и т.д.)
                         doc.render({
