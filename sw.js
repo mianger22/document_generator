@@ -4,8 +4,8 @@ const urlsToCache = [
     '/index.html',
     '/dist/styles.css',
     '/index.js',
-    '/images/icon-192x192.png',
-    '/images/icon-512x512.png'
+    'images/icon-192x192.png',
+    'images/icon-512x512.png'
 ];
 
 // Установите кэш
