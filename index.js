@@ -1,11 +1,11 @@
 // -- make pwa --
 
 if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function() {
-        navigator.serviceWorker.register('/sw.js').then(function(registration) {
-            console.log('Service Worker зарегистрирован с областью:', registration.scope);
-        }, function(error) {
-            console.log('Ошибка при регистрации Service Worker:', error);
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').then((registration) => {
+            console.log('Service Worker зарегистрирован:', registration);
+        }).catch((error) => {
+            console.error('Ошибка при регистрации Service Worker:', error);
         });
     });
 }
