@@ -1,3 +1,15 @@
+// -- make pwa --
+
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/sw.js').then(function(registration) {
+            console.log('Service Worker зарегистрирован с областью:', registration.scope);
+        }, function(error) {
+            console.log('Ошибка при регистрации Service Worker:', error);
+        });
+    });
+}
+
 // Общие функции
 const custom_alert = (message, color = "red") => {
     return window.Swal.fire({
